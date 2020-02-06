@@ -28,4 +28,4 @@ export const getResArithOperat = (num1, num2, operator) => {
 };
 
 export const checkNumIsEven = (randInt) => (randInt % 2 === 0 ? 'yes' : 'no');
-export const checkValAndAnswUse = (correctAnswer, useAnswer, useName) => (correctAnswer === useAnswer ? 'Correct!' : `\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);
+export const checkValAndAnswUse = (correctAnswer, useAnswer, useName) => (correctAnswer === Number(useAnswer) ? 'Correct!' : `\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);

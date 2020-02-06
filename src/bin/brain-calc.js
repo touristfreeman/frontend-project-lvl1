@@ -2,4 +2,4 @@
 
 import gameBrainCalc from '../games/calc';
 
-gameBrainCalc();
+gameBrainCalc(0);
