@@ -27,29 +27,22 @@ const cdr = (p2) => p2((x, y) => y);
 
 
 // фнц прогоняющая первый индекс по второму массиву.
-const findCopy = (i, array2, arrCounter = 0) => {
-  console.log(`marker 1, arrCounter ${arrCounter}, i - ${i}, array2[arrCounter] - ${array2[arrCounter]}`);
-  if (i === array2[arrCounter]) {
-    return cons(i, arrCounter);// cons(i, arrConter)(функция какая должна быть здесь?); #получитьИзПары
+const findCopy = (arr1Count, array2, arr2Count = 0) => { // рефакторинг в одну строчку
+  console.log(`marker 1, arr2Count ${arr2Count}, arr1Count - ${arr1Count}, array2[arr2Count] - ${array2[arr2Count]}`);
+  if (arr1Count === array2[arr2Count]) {
+    return cons(arr1Count, arr2Count);
   }
-  return findCopy(i, array2, arrCounter + 1);
+  return findCopy(arr1Count, array2, arr2Count + 1);
 };
 
 // новая поиск одинаковых множителей (взм, с последующим делением)
-const getCommonFactors = (arr1, arr2, arr3) => {
- // console.log(`marker 2, ${count1}, commonFactors`); //
+const getCommonFactors = (arr1, arr2, arr3, count1 = 0) => {
+  console.log(`marker 2, ${count1}`); //
   // findCopy(arr1[count1], arr2) //получаем два числа первый общий делитель, второе - делитель, который нужно удалить из второго массива. #получитьИзПары
 
-  //БАЗОВЫЙ СЛУЧАЙ
-  if (arr1 === '') {
-    return 'hui';
-  }
-
-  // ДОБАВЛЯЕМ в третий массив общий делитель 
-  const pairsFactors = findCopy(arr1[0], arr2);
+  // ДОБАВЛЯЕМ в третий массив общий делитель
   let currConmmFac = [];
-  currConmmFac = car(pairsFactors);
-  return getCommonFactors(arr1.shift, arr2, currConmmFac);
+  // currConmmFac = car(findCopy(arr1[count1], arr2));
 
   //ФОРМИРУЕМ НОВЫЙ МАССИВ похоже получится, как я предполагал, типа засунуть функцию формирующую массив без 
 
@@ -59,6 +52,7 @@ const getCommonFactors = (arr1, arr2, arr3) => {
   // базовый случай "когда кончился первый массив" возвращает третий массив
   // если findCopy возвращает положительный результат то добавляется в третий массив, если не встретил, то завпускает еще один
 
-  return ; // ПРОБЛЕМа возвращает массив
+  return car(findCopy(arr1[count1], arr2));
+  ; // ПРОБЛЕМа возвращает массив
 };
 export default getCommonFactors;
