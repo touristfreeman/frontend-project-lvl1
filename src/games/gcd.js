@@ -28,31 +28,32 @@ const cdr = (p2) => p2((x, y) => y);
 
 // фнц прогоняющая первый индекс по второму массиву.
 const findCopy = (arr1Count, array2, arr2Count = 0) => { // рефакторинг в одну строчку
-  console.log(`marker 1, arr2Count ${arr2Count}, arr1Count - ${arr1Count}, array2[arr2Count] - ${array2[arr2Count]}`);
-  if (arr1Count === array2[arr2Count]) {
-    return cons(arr1Count, arr2Count);
+  console.log(`М-1, arr2Count ${arr2Count}, arr1Count - ${arr1Count}, array2[arr2Count] - ${array2[arr2Count]}, array2.length ${array2.length - 1}`);
+  if (arr2Count >= array2.length - 1) {
+    return cons(arr1Count, arr2Count); // если массив закончился, то нужно вызвать еще раз функцию getCommonFactors с плюсовым счетчиком
   }
   return findCopy(arr1Count, array2, arr2Count + 1);
 };
 
 // новая поиск одинаковых множителей (взм, с последующим делением)
 const getCommonFactors = (arr1, arr2, arr3, count1 = 0) => {
-  console.log(`marker 2, ${count1}`); //
-  // findCopy(arr1[count1], arr2) //получаем два числа первый общий делитель, второе - делитель, который нужно удалить из второго массива. #получитьИзПары
+  console.log(`М-2, ${count1}`); //
 
+  // Базовый случа
+  if (count1 >= arr1.length - 1) {
+    return 'hui';
+  }
+  // получаем пару фактов
+  const pairFactors = findCopy(arr1[count1], arr2);
   // ДОБАВЛЯЕМ в третий массив общий делитель
   let currConmmFac = [];
-  // currConmmFac = car(findCopy(arr1[count1], arr2));
+  currConmmFac = car(pairFactors);
+  console.log(`М-3, currConmmFac ${currConmmFac}`);
+  // ФОРМИРУЕМ НОВЫЙ МАССИВ 
+  arr2.splice(cdr(pairFactors), 1);
+  console.log(`М-4, arr2 ${arr2}`);
 
-  //ФОРМИРУЕМ НОВЫЙ МАССИВ похоже получится, как я предполагал, типа засунуть функцию формирующую массив без 
-
-  // const arr4 = arr2 // из этого массива будем вырезать #получитьИзПары
-  // создать функцию, которая будет через пуш сохранять все значения массива, кроме номера массива полученного из функции findCopy
-  // -- вызываем fineCopy с conunt1 + 1 и исправленной arr2
-  // базовый случай "когда кончился первый массив" возвращает третий массив
-  // если findCopy возвращает положительный результат то добавляется в третий массив, если не встретил, то завпускает еще один
-
-  return car(findCopy(arr1[count1], arr2));
-  ; // ПРОБЛЕМа возвращает массив
+  return getCommonFactors(arr1, arr2, arr3, count1 + 1);
+  // ПРОБЛЕМа возвращает массив
 };
 export default getCommonFactors;
