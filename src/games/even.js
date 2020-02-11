@@ -1,13 +1,13 @@
 
 import {
-  GreetAndSayRuls, askName, sayHi, askQuestion, sayResult, getUseAnswer,
-  getRandInt, checkNumIsEven, checkValAndAnswUse,
+  Greet, askQuestion, sayResult, getUseAnswer,
+  getRandInt, checkNumIsEven, checkValAndAnswUse, sayRules, getNameSayHi,
 } from '../index';
 
 const gameParityCheck = () => {
-  GreetAndSayRuls('Answer "yes" if the number is even, otherwise answer "no".');
-  const name = askName();
-  sayHi(name);
+  Greet();
+  const name = getNameSayHi();
+  sayRules('Answer "yes" if the number is even, otherwise answer "no".');
 
   let i = 0;
   while (i !== 3) {

@@ -1,19 +1,24 @@
 import readlineSync from 'readline-sync';
 
-export const GreetAndSayRuls = (rulsOfGame) => console.log(`Welcome to the Brain Games! \n${rulsOfGame}`);
-export const askName = () => readlineSync.question(' \nMay I have your name? ');
-export const sayHi = (name) => console.log(`Hi ${name} !\n`);
+export const Greet = () => console.log('Welcome to the Brain Games!');
+export const sayRules = (rules) => console.log(rules);
+export const getNameSayHi = () => {
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hi ${name} !`);
+  return name;
+};
 export const askQuestion = (question) => console.log(`Question: ${question}`);
 export const sayResult = (result) => console.log(result);
 export const getUseAnswer = () => readlineSync.question('Your answer: ');
 
 export const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
+
 export const getRandomOperator = () => {
   const operators = ['-', '+', '*'];
   return operators[getRandInt(2)];
 };
 
-export const getResArithOperat = (num1, num2, operator) => {
+export const getResArithOperatAndAskUs = (num1, num2, operator) => {
   let operationResult = num1 * num2;
 
   if (operator === '-') {
@@ -27,5 +32,25 @@ export const getResArithOperat = (num1, num2, operator) => {
   return operationResult;
 };
 
+// ------------
+
+export const getPrimeFactors = (num, acc = 2, str = '') => {
+  const foo = (n) => (n % 2 !== 0 || n === 2 ? n : foo(n + 1));
+
+  if (num === 17) {
+    return str;
+  }
+  const curAcc = foo(acc);
+  if (num % curAcc === 0) {
+    const string = `${str}${curAcc}`;
+    const accumulat = 2;
+    return getPrimeFactors(num / curAcc, accumulat, string);
+  }
+  return getPrimeFactors(num, acc + 1, str);
+};
+// ----------------
+
 export const checkNumIsEven = (randInt) => (randInt % 2 === 0 ? 'yes' : 'no');
-export const checkValAndAnswUse = (correctAnswer, useAnswer, useName) => (correctAnswer === Number(useAnswer) ? 'Correct!' : `\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);
+export const checkValAndAnswUse = (correctAnswer, useAnswer, useName) => (String(correctAnswer) === useAnswer ? 'Correct!' : `\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);
+
+
