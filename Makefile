@@ -3,11 +3,8 @@ install: install-deps
 install-deps:
 	npm install
 
-start calc:
-	npx babel-node src/bin/brain-calc.js
-
-start even:
-	npx babel-node src/bin/brain-even.js
+start:
+	npx babel-node src/bin/brain-cdg.js
 
 publish:
 	npm publish --dry-run
@@ -15,5 +12,5 @@ publish:
 lint:
 	npx eslint
  
- link:
+link:
 	sudo npm link
