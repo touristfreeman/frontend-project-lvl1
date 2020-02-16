@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 
 
 export const cons = (x, y) => (f) => f(x, y);
-export const car = (p1) => p1((x, y) => x);
+export const car = (p1) => p1((x) => x);
 export const cdr = (p2) => p2((x, y) => y);
 
 export const Greet = () => console.log('Welcome to the Brain Games!');
@@ -37,24 +37,6 @@ export const getResArithOperatAndAskUs = (num1, num2, operator) => {
   askQuestion(`${num1} ${operator} ${num2}`);
   return operationResult;
 };
-
-// ------------
-
-export const getPrimeFactors = (num, acc = 2, str = '') => {
-  const foo = (n) => (n % 2 !== 0 || n === 2 ? n : foo(n + 1));
-
-  if (num === 17) {
-    return str;
-  }
-  const curAcc = foo(acc);
-  if (num % curAcc === 0) {
-    const string = `${str}${curAcc}`;
-    const accumulat = 2;
-    return getPrimeFactors(num / curAcc, accumulat, string);
-  }
-  return getPrimeFactors(num, acc + 1, str);
-};
-// ----------------
 
 export const checkNumIsEven = (randInt) => (randInt % 2 === 0 ? 'yes' : 'no');
 export const checkValAndAnswUse = (correctAnswer, useAnswer, useName) => (String(correctAnswer) === useAnswer ? 'Correct!' : `\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);

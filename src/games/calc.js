@@ -1,24 +1,25 @@
 
 import {
   Greet, sayResult, getUseAnswer,
-  getRandInt, checkValAndAnswUse, getResArithOperatAndAskUs, getRandomOperator, sayRules, getNameSayHi,
+  getRandInt, checkValAndAnswUse, getResArithOperatAndAskUs, getRandomOperator,
+  sayRules, getNameSayHi,
 } from '../index';
 
-const gameBrainCalc = (acc) => {
+const gameBrainCalc = () => {
   Greet();
   const name = getNameSayHi();
   sayRules('What is the result of the expression?');
 
-  const recursIter = (ac) => {
+  const recursIter = (ac = 0) => {
     if (ac === 3) {
       return console.log(`Congratulations, ${name}`);
     }
-    const questionForUser = getResArithOperatAndAskUs(getRandInt(99), getRandInt(99), getRandomOperator());
+    const questUse = getResArithOperatAndAskUs(getRandInt(99), getRandInt(99), getRandomOperator());
     const curUseAnw = getUseAnswer();
-    const resultOfChecking = checkValAndAnswUse((questionForUser), curUseAnw, name);
+    const resultOfChecking = checkValAndAnswUse((questUse), curUseAnw, name);
     sayResult(resultOfChecking);
     return resultOfChecking === 'Correct!' ? recursIter(ac + 1) : null;
   };
-  return recursIter(acc);
+  return recursIter();
 };
 export default gameBrainCalc;
