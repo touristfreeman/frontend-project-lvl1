@@ -1,7 +1,7 @@
 
 import {
   Greet, sayResult, getUseAnswer,
-  getRandInt, checkValAndAnswUse, getResArithOperat, getRandomOperator, sayRules, getNameSayHi,
+  getRandInt, checkValAndAnswUse, getResArithOperatAndAskUs, getRandomOperator, sayRules, getNameSayHi,
 } from '../index';
 
 const gameBrainCalc = (acc) => {
@@ -13,7 +13,7 @@ const gameBrainCalc = (acc) => {
     if (ac === 3) {
       return console.log(`Congratulations, ${name}`);
     }
-    const questionForUser = getResArithOperat(getRandInt(99), getRandInt(99), getRandomOperator());
+    const questionForUser = getResArithOperatAndAskUs(getRandInt(99), getRandInt(99), getRandomOperator());
     const curUseAnw = getUseAnswer();
     const resultOfChecking = checkValAndAnswUse((questionForUser), curUseAnw, name);
     sayResult(resultOfChecking);

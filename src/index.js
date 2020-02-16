@@ -1,5 +1,10 @@
 import readlineSync from 'readline-sync';
 
+
+export const cons = (x, y) => (f) => f(x, y);
+export const car = (p1) => p1((x, y) => x);
+export const cdr = (p2) => p2((x, y) => y);
+
 export const Greet = () => console.log('Welcome to the Brain Games!');
 export const sayRules = (rules) => console.log(rules);
 export const getNameSayHi = () => {
@@ -8,6 +13,7 @@ export const getNameSayHi = () => {
   return name;
 };
 export const askQuestion = (question) => console.log(`Question: ${question}`);
+export const askQuestionNew = (question) => console.log(`Question: ${car(question)} ${cdr(question)}`); // не проверено еще, но должно работать)
 export const sayResult = (result) => console.log(result);
 export const getUseAnswer = () => readlineSync.question('Your answer: ');
 
@@ -52,5 +58,3 @@ export const getPrimeFactors = (num, acc = 2, str = '') => {
 
 export const checkNumIsEven = (randInt) => (randInt % 2 === 0 ? 'yes' : 'no');
 export const checkValAndAnswUse = (correctAnswer, useAnswer, useName) => (String(correctAnswer) === useAnswer ? 'Correct!' : `\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);
-
-

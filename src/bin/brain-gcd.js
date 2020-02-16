@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 
-import getCommonFactors from '../games/gcd';
+import { getNod, getCommonFactors, getRandInt, findCopyFactor, foo, getPrimeFactors } from '../games/gcd';
 
 
-getCommonFactors([5, 4, 3, 4, 5], [2, 4, 5, 1]);
+// getCommonFactors([2, 2, 2, 5, 17], [2, 2, 3, 3, 17]);
+// console.log(getCommonFactors);
+
+getNod();
+
+// const constFactor = findCopyFactor([17], [3, 3, 17]);
+// console.log(car(constFactor), cdr(constFactor));
