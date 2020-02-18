@@ -3,7 +3,7 @@ import {
   getRandInt, checkValAndAnswUse,
 } from '../index';
 
-export const getNumberSeries = () => {
+const getNumberSeries = () => {
   const initialNum = getRandInt(9);
   const difference = getRandInt(9);
 
@@ -20,7 +20,7 @@ export const getNumberSeries = () => {
 
 // в вызов этой функции нужно передать в colon вызов рандомного числа до 9
 // еще возможно вызов самой этой функции вложить в вызов функции askQuestion
-export const getStringNumSeries = (numberSeries, colon, stirnForUse = '', count = 0) => {
+const getStringNumSeries = (numberSeries, colon, stirnForUse = '', count = 0) => {
   if (count > 9) {
     return cons(stirnForUse, numberSeries[colon]);
   }
@@ -35,7 +35,7 @@ export const getStringNumSeries = (numberSeries, colon, stirnForUse = '', count 
 };
 
 
-export const brainProgression = () => {
+const brainProgression = () => {
   Greet();
   const name = getNameSayHi();
   sayRules('What number is missing in the progression?');
@@ -54,3 +54,4 @@ export const brainProgression = () => {
   };
   return coutnToThree();
 };
+export default brainProgression;
