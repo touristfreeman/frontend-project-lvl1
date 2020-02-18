@@ -1,36 +1,60 @@
 /* eslint-disable padded-blocks */
 /* eslint-disable max-len */
 import {
-    Greet, getNameSayHi, sayRules, cons, car, cdr,
-    askQuestionNew, sayResult, getUseAnswer,
-    getRandInt, checkValAndAnswUse,
-  } from '../index';
+  Greet, getNameSayHi, sayRules, cons, car, cdr,
+  askQuestionNew, askQuestion, sayResult, getUseAnswer,
+  getRandInt, checkValAndAnswUse,
+} from '../index';
 
 export const getNumberSeries = () => {
   const initialNum = getRandInt(9);
   const difference = getRandInt(9);
-  // let NumberSeries = [initialNum];
-  // console.log(`NumberSeries m-2 ${NumberSeries} обьявляем массив числового ряда`);
 
   const getNumArray = (arr = [initialNum], count = 0) => {
     const array = arr;
-    console.log(`getNumArray m-4, array ${array}, conunt ${count}, difference ${difference} первый заход в функцию `);
     if (count >= 9) {
       return array; // или даже возвращаем пару, если понадобится или пару вернем из внешенй функции
     }
     array.push(array[count] + difference);
     return getNumArray(array, count + 1);
   };
-  // console.log(`getNumberSeries m-3 вывод перед конечный возврат массива NumberSeries ${array} из ф. getNumberSeries`);
   return getNumArray();
 };
 
-/* for (let i = 0; i <= 10; i += 1) {
-    NumberSeries.push(initialNum + difference);
-    console.log(`getNumberSeries m-1 ${getNumberSeries} пров-ем добавление числового ряда`); 
-  } */
+// в вызов этой функции нужно передать в colon вызов рандомного числа до 9
+// еще возможно вызов самой этой функции вложить в вызов функции askQuestion
+export const getStringNumSeries = (numberSeries, colon, stirnForUse = '', count = 0) => {
+  if (count > 9) {
+    return cons(stirnForUse, numberSeries[colon]);
+  }
+
+  if (colon === count) {
+    const string = `${stirnForUse} ..`;
+    return getStringNumSeries(numberSeries, colon, string, count + 1);
+  }
+
+  const string = `${stirnForUse} ${numberSeries[count]}`;
+  console.log(`getStringNumSeries m-1 string ${string}, numberSeries[count] ${numberSeries[count]}, colon ${colon}`);
+  return getStringNumSeries(numberSeries, colon, string, count + 1); // как вывод, что бы вывести все в массив? АААА так можно легко вывести строчкой
+};
+
 
 export const brainProgression = () => {
+  Greet();
+  const name = getNameSayHi();
+  sayRules('What number is missing in the progression?');
 
-
+  const coutnToThree = (count = 0) => {
+    if (count === 3) {
+      return console.log(`Congratulations, ${name}`);
+    }
+    const numrSeries = getNumberSeries();
+    const stringNumSeries = getStringNumSeries(numrSeries, getRandInt(8));
+    askQuestion(car(stringNumSeries));
+    console.log(cdr(stringNumSeries));
+    const checkResult = checkValAndAnswUse(cdr(stringNumSeries), getUseAnswer(), name);
+    sayResult(checkResult);
+    return checkResult === 'Correct!' ? coutnToThree(count + 1) : null;
+  };
+  return coutnToThree();
 };
