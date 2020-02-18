@@ -1,8 +1,5 @@
-/* eslint-disable padded-blocks */
-/* eslint-disable max-len */
 import {
-  Greet, getNameSayHi, sayRules, cons, car, cdr,
-  askQuestionNew, askQuestion, sayResult, getUseAnswer,
+  Greet, getNameSayHi, sayRules, cons, car, cdr, askQuestion, sayResult, getUseAnswer,
   getRandInt, checkValAndAnswUse,
 } from '../index';
 
@@ -34,8 +31,7 @@ export const getStringNumSeries = (numberSeries, colon, stirnForUse = '', count 
   }
 
   const string = `${stirnForUse} ${numberSeries[count]}`;
-  console.log(`getStringNumSeries m-1 string ${string}, numberSeries[count] ${numberSeries[count]}, colon ${colon}`);
-  return getStringNumSeries(numberSeries, colon, string, count + 1); // как вывод, что бы вывести все в массив? АААА так можно легко вывести строчкой
+  return getStringNumSeries(numberSeries, colon, string, count + 1);
 };
 
 
