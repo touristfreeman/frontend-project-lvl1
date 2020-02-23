@@ -1,7 +1,7 @@
 
 import {
-  Greet, askQuestion, sayResult, getUseAnswer,
-  getRandInt, checkNumIsEven, checkValAndAnswUse, sayRules, getNameSayHi,
+  Greet, askQuestion, getUseAnswer,
+  getRandInt, checkNumIsEven, checkUseAnswAndSayRes, sayRules, getNameSayHi,
 } from '../index';
 
 const gameParityCheck = () => {
@@ -13,9 +13,8 @@ const gameParityCheck = () => {
   while (i !== 3) {
     const RandInt = getRandInt(99);
     askQuestion(RandInt);
-    const resultOfChecking = checkValAndAnswUse(checkNumIsEven(RandInt), getUseAnswer(), name);
-    sayResult(resultOfChecking);
-    i = resultOfChecking === 'Correct!' ? i += 1 : i = 0;
+    const checkResult = checkUseAnswAndSayRes(checkNumIsEven(RandInt), getUseAnswer(), name);
+    i = checkResult ? i += 1 : i = 0;
   }
   return console.log(`Congratulations, ${name}`);
 };

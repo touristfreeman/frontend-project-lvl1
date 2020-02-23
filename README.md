@@ -10,6 +10,7 @@
 <p>brain-calc</p>
 <a href="https://asciinema.org/a/utu1dQzZ5RA7Mz4tOUO6Y2tq0" target="_blank"><img src="https://asciinema.org/a/utu1dQzZ5RA7Mz4tOUO6Y2tq0.svg" /></a>
 
+<p>brain-gcd</p>
 <a href="https://asciinema.org/a/LRAwwEsCHcN6Y7Dxkw3RGT64Z" target="_blank"><img src="https://asciinema.org/a/LRAwwEsCHcN6Y7Dxkw3RGT64Z.svg" /></a>
 
 <p>brain-progression</p>

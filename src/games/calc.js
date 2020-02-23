@@ -1,8 +1,8 @@
 
 import {
-  Greet, sayResult, getUseAnswer,
-  getRandInt, checkValAndAnswUse, getResArithOperatAndAskUs, getRandomOperator,
-  sayRules, getNameSayHi,
+  Greet, getUseAnswer,
+  getRandInt, checkUseAnswAndSayRes, getResArithOperat, getRandomOperator,
+  sayRules, getNameSayHi, askQuestion, car, cdr,
 } from '../index';
 
 const gameBrainCalc = () => {
@@ -10,16 +10,15 @@ const gameBrainCalc = () => {
   const name = getNameSayHi();
   sayRules('What is the result of the expression?');
 
-  const recursIter = (ac = 0) => {
-    if (ac === 3) {
+  const coutnToThree = (count = 0) => {
+    if (count === 3) {
       return console.log(`Congratulations, ${name}`);
     }
-    const questUse = getResArithOperatAndAskUs(getRandInt(99), getRandInt(99), getRandomOperator());
-    const curUseAnw = getUseAnswer();
-    const resultOfChecking = checkValAndAnswUse((questUse), curUseAnw, name);
-    sayResult(resultOfChecking);
-    return resultOfChecking === 'Correct!' ? recursIter(ac + 1) : null;
+    const ResultArithOper = getResArithOperat(getRandInt(99), getRandInt(99), getRandomOperator());
+    askQuestion(cdr(ResultArithOper));
+    const checkResult = checkUseAnswAndSayRes((car(ResultArithOper)), getUseAnswer(), name);
+    return checkResult ? coutnToThree(count + 1) : null;
   };
-  return recursIter();
+  return coutnToThree();
 };
 export default gameBrainCalc;

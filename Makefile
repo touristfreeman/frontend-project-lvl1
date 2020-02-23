@@ -4,7 +4,7 @@ install-deps:
 	npm install
 
 start:
-	npx babel-node src/bin/brain-cdg.js
+	npx babel-node src/bin/brain-prime.js
 
 publish:
 	npm publish --dry-run
