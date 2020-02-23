@@ -11,7 +11,6 @@ const gameBrainPrime = () => {
   sayRules('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   const coutnToThree = (count = 0) => {
-    console.log(`coutnToThree m-1; count, ${count}`);
     if (count === 3) {
       return console.log(`Congratulations, ${name}`);
     }
