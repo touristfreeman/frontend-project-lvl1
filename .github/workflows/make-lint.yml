@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: esho Fuck
-        run: esho 'Fuck'
+      - name: echo Fuck
+        run: echo 'Fuck'
