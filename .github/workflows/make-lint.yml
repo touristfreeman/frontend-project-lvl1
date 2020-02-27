@@ -1,4 +1,4 @@
-name: Run-make-lint
+name: Node.js CI
 
 on: [push]
 
@@ -17,7 +17,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: make lint
-      run: make lint
+    - run: npm install
+    - run: npm run build --if-present
+    - run: npm test
+    - run: make lint
       env:
         CI: true
