@@ -9,5 +9,5 @@ jobs:
 
     steps:
       - name: run Eslint
-        run : make lint
+        run: make lint
 
