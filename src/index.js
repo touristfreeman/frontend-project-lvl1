@@ -1,4 +1,5 @@
 import readlineSync from 'readline-sync';
+import { Linter } from 'eslint';
 
 
 export const cons = (x, y) => (f) => f(x, y);
@@ -97,7 +98,6 @@ export const getResArithOperat = (num1, num2, operator) => {
     operationResult = num1 * num2;
   }
   const QuestionToUse = `${num1} ${operator} ${num2}`;
-  console.log(`getResArithOperatAndAskUs m-1; operationResult ${operationResult}`);
   return cons(operationResult, QuestionToUse);
 };
 
@@ -139,3 +139,5 @@ export const getStringNumSeries = (numberSeries, colon, stirnForUse = '', count 
   const string = `${stirnForUse} ${numberSeries[count]}`;
   return getStringNumSeries(numberSeries, colon, string, count + 1);
 };
+
+
