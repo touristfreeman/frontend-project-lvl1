@@ -3,13 +3,10 @@ name: run-lint-fail
 on: [push]
 
 jobs:
-  build:
+  jobs-run-lint:
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: console Hello
-        run: console.log('Hello')
-        
-      - name: Run linter
-        run: make lint
+      - name: esho Fuck
+        run: esho 'Fuck'
