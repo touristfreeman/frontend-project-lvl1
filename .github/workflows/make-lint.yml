@@ -8,5 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: run ls
-        run : ls -la
+      - name: run Eslint
+        run : make lint
+        env: 
+          key: js
