@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: run Eslint
-        run: npx eslint
+      - name: Run npx eslint .
+        run: Run npx eslint .
 
