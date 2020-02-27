@@ -9,6 +9,6 @@ jobs:
 
     steps:
       - name: run Eslint
-        run : npx eslint . 
+        run : npx eslint
         env: 
           key: js
