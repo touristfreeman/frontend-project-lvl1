@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: console Hello
+        run: console.log('Hello')
+        
+      - name: Run linter
+        run: make lint
