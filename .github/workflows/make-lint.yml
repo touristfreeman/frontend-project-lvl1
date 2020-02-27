@@ -1,0 +1,12 @@
+name: run-lint-fail
+
+on: [push]
+
+jobs:
+  jobs-run-lint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: make lint
+        run: npx eslint .
