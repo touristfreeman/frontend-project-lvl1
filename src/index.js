@@ -1,6 +1,4 @@
 import readlineSync from 'readline-sync';
-import { Linter } from 'eslint';
-
 
 export const cons = (x, y) => (f) => f(x, y);
 export const car = (p1) => p1((x) => x);
@@ -139,5 +137,3 @@ export const getStringNumSeries = (numberSeries, colon, stirnForUse = '', count 
   const string = `${stirnForUse} ${numberSeries[count]}`;
   return getStringNumSeries(numberSeries, colon, string, count + 1);
 };
-
-
