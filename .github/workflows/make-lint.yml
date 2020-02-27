@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: make lint
-        run: make lint
+      - name: run ls
+        run : ls -la
