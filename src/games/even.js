@@ -1,21 +1,24 @@
 
 import {
-  Greet, askQuestion, getUseAnswer,
-  getRandInt, checkNumIsEven, checkUseAnswAndSayRes, sayRules, getNameSayHi,
+  Greet, askQuestion, getUseAnswer, getRandInt, checkUseAnswAndSayRes, sayRules, getNameSayHi,
 } from '../index';
+
+import checkNumIsEven from '../uniqueCodeEven';
 
 const gameParityCheck = () => {
   Greet();
   const name = getNameSayHi();
   sayRules('Answer "yes" if the number is even, otherwise answer "no".');
 
-  let i = 0;
-  while (i !== 3) {
+  const coutnToThree = (count = 0) => {
+    if (count === 3) {
+      return console.log(`Congratulations, ${name}`);
+    }
     const RandInt = getRandInt(99);
     askQuestion(RandInt);
     const checkResult = checkUseAnswAndSayRes(checkNumIsEven(RandInt), getUseAnswer(), name);
-    i = checkResult ? i += 1 : i = 0;
-  }
-  return console.log(`Congratulations, ${name}`);
+    return checkResult ? coutnToThree(count + 1) : null;
+  };
+  return coutnToThree();
 };
 export default gameParityCheck;

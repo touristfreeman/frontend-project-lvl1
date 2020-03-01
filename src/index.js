@@ -98,8 +98,6 @@ export const getResArithOperat = (num1, num2, operator) => {
   return cons(operationResult, QuestionToUse);
 };
 
-export const checkNumIsEven = (randInt) => (randInt % 2 === 0 ? 'yes' : 'no');
-
 export const checkUseAnswAndSayRes = (correctAnswer, useAnswer, useName) => {
   if (String(correctAnswer) === useAnswer) {
     console.log('Correct!');
