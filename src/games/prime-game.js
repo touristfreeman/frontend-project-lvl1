@@ -1,9 +1,10 @@
 
 import {
   Greet, getNameSayHi, sayRules, askQuestion, getUseAnswer,
-  getRandInt, checkPrimInt, checkUseAnswAndSayRes,
+  getRandInt, checkUseAnswAndSayRes,
 } from '../index';
 
+import checkPrimInt from '../uniqueCodePrime';
 
 const gameBrainPrime = () => {
   Greet();

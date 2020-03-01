@@ -32,12 +32,6 @@ export const checkUseAnswAndSayRes = (correctAnswer, useAnswer, useName) => {
 // ------------ похоже она только для функции prime
 
 
-export const checkPrimInt = (num, count = 2) => {
-  if (count === num) {
-    return 'yes';
-  }
-  return num % count === 0 ? 'no' : checkPrimInt(num, count + 1);
-};
 // -------------------------------------------------------------------------------------
 
 
