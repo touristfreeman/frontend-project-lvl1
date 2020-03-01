@@ -17,7 +17,6 @@ export const getUseAnswer = () => readlineSync.question('Your answer: ');
 
 export const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 export const getPrimInt = (num) => (num % 2 !== 0 || num === 2 ? num : getPrimInt(num + 1));
-// export const checkPrimInt = (num) => (num > 1 && num % 2 !== 0 ? 'yes' : 'no');
 
 // -------------------------------------------------------------------------------------
 export const checkPrimInt = (num, count = 2) => {
