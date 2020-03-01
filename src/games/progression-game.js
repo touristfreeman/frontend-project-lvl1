@@ -1,7 +1,9 @@
 import {
   Greet, getNameSayHi, sayRules, car, cdr, askQuestion, getUseAnswer,
-  getRandInt, checkUseAnswAndSayRes, getNumberSeries, getStringNumSeries,
+  getRandInt, checkUseAnswAndSayRes,
 } from '../index';
+
+import { getNumberSeries, getStringNumSeries } from '../uniqueCodeProgression';
 
 const gameBrainProgression = () => {
   Greet();
