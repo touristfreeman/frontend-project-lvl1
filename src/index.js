@@ -77,26 +77,7 @@ export const getCommonFact = (arr1, arr2, arr3 = [], count1 = 0) => {
   arr2.splice(cdr(pairFactors), 1);
   return getCommonFact(arr1, arr2, arr3, count1 + 1);
 };
-// -------------------------------------------------------------------------------------
 
-export const getRandomOperator = () => {
-  const operators = ['-', '+', '*'];
-  return operators[getRandInt(2)];
-};
-
-export const getResArithOperat = (num1, num2, operator) => {
-  let operationResult = num1 * num2;
-
-  if (operator === '-') {
-    operationResult = num1 - num2;
-  } else if (operator === '+') {
-    operationResult = num1 + num2;
-  } else {
-    operationResult = num1 * num2;
-  }
-  const QuestionToUse = `${num1} ${operator} ${num2}`;
-  return cons(operationResult, QuestionToUse);
-};
 
 export const checkUseAnswAndSayRes = (correctAnswer, useAnswer, useName) => {
   if (String(correctAnswer) === useAnswer) {

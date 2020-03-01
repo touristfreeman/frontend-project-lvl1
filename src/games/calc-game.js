@@ -1,9 +1,10 @@
 
 import {
-  Greet, getUseAnswer,
-  getRandInt, checkUseAnswAndSayRes, getResArithOperat, getRandomOperator,
-  sayRules, getNameSayHi, askQuestion, car, cdr,
+  Greet, getUseAnswer, getRandInt, checkUseAnswAndSayRes, sayRules, getNameSayHi, askQuestion,
+  car, cdr,
 } from '../index';
+
+import { getResArithOperat, getRandomOperator } from '../uniqueCodeCalc';
 
 const gameBrainCalc = () => {
   Greet();
