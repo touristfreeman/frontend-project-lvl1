@@ -9,7 +9,7 @@
 <a href="https://asciinema.org/a/306254" target="_blank"><img src="https://asciinema.org/a/306254.svg" /></a>
 
 <p>brain-gcd</p>
-
+<a href="https://asciinema.org/a/306306" target="_blank"><img src="https://asciinema.org/a/306306.svg" /></a>
 <p>brain-progression</p>
 
 <p>brain-prime</p>

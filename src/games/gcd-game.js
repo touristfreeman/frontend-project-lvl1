@@ -1,9 +1,10 @@
 
 import {
   Greet, getNameSayHi, sayRules, cons, car, cdr, askQuestion, getUseAnswer,
-  getRandInt, checkUseAnswAndSayRes, getSimpleFact, getCommonFact,
+  getRandInt, checkUseAnswAndSayRes,
 } from '../index';
 
+import { getSimpleFact, getCommonFact } from '../uniqueCodeGcd';
 
 const gameGcd = () => {
   Greet();
