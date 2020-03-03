@@ -18,3 +18,5 @@
 
 <p>brain-prime</p>
 <a href="https://asciinema.org/a/306316" target="_blank"><img src="https://asciinema.org/a/306316.svg" /></a>
+
+[![asciicast](https://asciinema.org/a/JHtzz3Xvrw3en9SgbZ1XzNXy4.svg)](https://asciinema.org/a/JHtzz3Xvrw3en9SgbZ1XzNXy4)
