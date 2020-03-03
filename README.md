@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/travis-ci/travis-web.svg?branch=master)](https://travis-ci.com/travis-ci/travis-web)</p>
 
+![](https://github.com/touristfreeman/frontend-project-lvl1/workflows/Node.js%20CI
+/badge.svg)
 
 
 <p>brain-even</p>
