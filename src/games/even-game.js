@@ -3,7 +3,7 @@ import {
   Greet, askQuestion, getUseAnswer, getRandInt, checkUseAnswAndSayRes, sayRules, getNameSayHi,
 } from '../index';
 
-import checkNumIsEven from '../uniqueCodeEven';
+const checkNumIsEven = (randInt) => (randInt % 2 === 0 ? 'yes' : 'no');
 
 const gameParityCheck = () => {
   Greet();

@@ -4,7 +4,12 @@ import {
   getRandInt, checkUseAnswAndSayRes,
 } from '../index';
 
-import checkPrimInt from '../uniqueCodePrime';
+const checkPrimInt = (num, count = 2) => {
+  if (count === num) {
+    return 'yes';
+  }
+  return num % count === 0 ? 'no' : checkPrimInt(num, count + 1);
+};
 
 const gameBrainPrime = () => {
   Greet();

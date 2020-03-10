@@ -1,10 +1,27 @@
 
 import {
   Greet, getUseAnswer, getRandInt, checkUseAnswAndSayRes, sayRules, getNameSayHi, askQuestion,
-  car, cdr,
+  car, cdr, cons,
 } from '../index';
 
-import { getResArithOperat, getRandomOperator } from '../uniqueCodeCalc';
+const getResArithOperat = (num1, num2, operator) => {
+  let operationResult = num1 * num2;
+
+  if (operator === '-') {
+    operationResult = num1 - num2;
+  } else if (operator === '+') {
+    operationResult = num1 + num2;
+  } else {
+    operationResult = num1 * num2;
+  }
+  const QuestionToUse = `${num1} ${operator} ${num2}`;
+  return cons(operationResult, QuestionToUse);
+};
+
+const getRandomOperator = () => {
+  const operators = ['-', '+', '*'];
+  return operators[getRandInt(2)];
+};
 
 const gameBrainCalc = () => {
   Greet();
