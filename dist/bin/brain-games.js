@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+"use strict";
+
+var _index = require("../index.js");
+
+console.log('Welcome to the Brain Games!');
+(0, _index.getNameAndGreet)();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9iaW4vYnJhaW4tZ2FtZXMuanMiXSwibmFtZXMiOlsiY29uc29sZSIsImxvZyJdLCJtYXBwaW5ncyI6IkFBQUE7OztBQUVBOztBQUVBQSxPQUFPLENBQUNDLEdBQVIsQ0FBWSw2QkFBWjtBQUVBIiwic291cmNlc0NvbnRlbnQiOlsiIyEvdXNyL2Jpbi9lbnYgbm9kZVxuXG5pbXBvcnQgeyBnZXROYW1lQW5kR3JlZXQgfSBmcm9tICcuLi9pbmRleC5qcyc7XG5cbmNvbnNvbGUubG9nKCdXZWxjb21lIHRvIHRoZSBCcmFpbiBHYW1lcyEnKTtcblxuZ2V0TmFtZUFuZEdyZWV0KCk7XG5cblxuXG4iXX0=
