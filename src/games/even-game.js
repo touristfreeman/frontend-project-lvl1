@@ -1,24 +1,22 @@
 
-import {
-  Greet, askQuestion, getUseAnswer, getRandInt, checkUseAnswAndSayRes, sayRules, getNameSayHi,
-} from '../index';
+import { brainGame, arrQuestionOfuse, getRandInt } from '../index';
 
-const checkNumIsEven = (randInt) => (randInt % 2 === 0 ? 'yes' : 'no');
+const checkNumIsEven = (questionOfuse) => {
+  const arrCheckRes = [];
 
-const gameParityCheck = () => {
-  Greet();
-  const name = getNameSayHi();
-  sayRules('Answer "yes" if the number is even, otherwise answer "no".');
-
-  const coutnToThree = (count = 0) => {
-    if (count === 3) {
-      return console.log(`Congratulations, ${name}`);
+  for (let i = 0; i <= 2; i += 1) {
+    if (questionOfuse[i] % 2 === 0) {
+      arrCheckRes.push('yes');
+    } else {
+      arrCheckRes.push('no');
     }
-    const RandInt = getRandInt(99);
-    askQuestion(RandInt);
-    const checkResult = checkUseAnswAndSayRes(checkNumIsEven(RandInt), getUseAnswer(), name);
-    return checkResult ? coutnToThree(count + 1) : null;
-  };
-  return coutnToThree();
+  }
+  return arrCheckRes;
 };
-export default gameParityCheck;
+
+const questionOfuse = arrQuestionOfuse(getRandInt, 99);
+
+const correctАnswer = checkNumIsEven(questionOfuse);
+const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+export default () => brainGame(rule, questionOfuse, correctАnswer);
