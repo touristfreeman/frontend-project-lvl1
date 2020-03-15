@@ -1,5 +1,17 @@
 
-import { brainGame, arrQuestionOfuse, getRandInt } from '../index';
+import {
+  brainGame, repeatThreeTimes,
+} from '../index';
+
+const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
+
+const getArrQuestionOfuse = (count = 0, array = []) => {
+  if (count === repeatThreeTimes) {
+    return array;
+  }
+  array.push(getRandInt(99));
+  return getArrQuestionOfuse(count + 1, array);
+};
 
 const checkNumIsEven = (questionOfuse) => {
   const arrCheckRes = [];
@@ -11,11 +23,11 @@ const checkNumIsEven = (questionOfuse) => {
       arrCheckRes.push('no');
     }
   }
+  console.log(`threeTimes ${repeatThreeTimes}`);
   return arrCheckRes;
 };
 
-const questionOfuse = arrQuestionOfuse(getRandInt, 99);
-
+const questionOfuse = getArrQuestionOfuse();
 const correctАnswer = checkNumIsEven(questionOfuse);
 const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
 

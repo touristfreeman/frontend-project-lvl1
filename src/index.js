@@ -11,23 +11,6 @@ const getNameSayHi = () => {
 const askQuestion = (question) => console.log(`Question: ${question}`);
 const getUseAnswer = () => readlineSync.question('Your answer: ');
 
-export const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
-
-export const cons = (x, y) => (f) => f(x, y);
-export const car = (p1) => p1((x) => x);
-export const cdr = (p2) => p2((x, y) => y);
-
-export const arrQuestionOfuse = (fo, foAmount, count = 0, arr = []) => {
-  console.log(arr);
-  console.log(`co ${count}`);
-
-  if (count > 2) {
-    return arr;
-  }
-  arr.push(fo(foAmount));
-  return arrQuestionOfuse(fo, foAmount, count + 1, arr);
-};
-
 const checkUseAnswAndSayRes = (correctAnswer, useAnswer, useName) => {
   if (String(correctAnswer) === useAnswer) {
     console.log('Correct!');
@@ -35,6 +18,8 @@ const checkUseAnswAndSayRes = (correctAnswer, useAnswer, useName) => {
   }
   return console.log(`\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);
 };
+
+export const repeatThreeTimes = 3;
 
 export const brainGame = (rule, questionOfuse, correctАnswerArr) => {
   Greet();

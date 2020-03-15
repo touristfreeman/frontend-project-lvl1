@@ -1,10 +1,13 @@
 
 import {
-  Greet, getUseAnswer, getRandInt, checkUseAnswAndSayRes, sayRules, getNameSayHi, askQuestion,
-  car, cdr, cons,
+  getRandInt, car, cdr, cons,
 } from '../index';
 
-const getResArithOperat = (num1, num2, operator) => {
+const cons = (x, y) => (f) => f(x, y);
+const car = (p1) => p1((x) => x);
+const cdr = (p2) => p2((x, y) => y);
+
+const getArithOperat = (num1, num2, operator) => {
   let operationResult = num1 * num2;
 
   if (operator === '-') {
@@ -23,6 +26,25 @@ const getRandomOperator = () => {
   return operators[getRandInt(2)];
 };
 
+const getRigthAnsw = () => {
+
+}
+
+const getArrResArithOperat = () => {
+  let arrArifOper = [];
+  
+  for
+}
+
+getArithOperat(getRandInt(99), getRandInt(99), getRandomOperator());
+
+const questionOfuse = cdr(arrQuestionOfuse());
+const correctАnswer = car(ResArithOperat);
+const rule = 'What is the result of the expression?';
+
+export default () => brainGame(rule, questionOfuse, correctАnswer);
+
+/*
 const gameBrainCalc = () => {
   Greet();
   const name = getNameSayHi();
@@ -32,7 +54,7 @@ const gameBrainCalc = () => {
     if (count === 3) {
       return console.log(`Congratulations, ${name}`);
     }
-    const ResultArithOper = getResArithOperat(getRandInt(99), getRandInt(99), getRandomOperator());
+    const ResultArithOper = getArithOperat(getRandInt(99), getRandInt(99), getRandomOperator());
     askQuestion(cdr(ResultArithOper));
     const checkResult = checkUseAnswAndSayRes((car(ResultArithOper)), getUseAnswer(), name);
     return checkResult ? coutnToThree(count + 1) : null;
@@ -40,3 +62,4 @@ const gameBrainCalc = () => {
   return coutnToThree();
 };
 export default gameBrainCalc;
+*/
