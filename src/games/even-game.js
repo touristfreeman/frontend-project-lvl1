@@ -1,12 +1,10 @@
 
-import {
-  brainGame, repeatThreeTimes,
-} from '../index';
+import brainGame from '../index';
 
 const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
 const getArrQuestionOfuse = (count = 0, array = []) => {
-  if (count === repeatThreeTimes) {
+  if (count === 3) {
     return array;
   }
   array.push(getRandInt(99));
@@ -23,7 +21,7 @@ const checkNumIsEven = (questionOfuse) => {
       arrCheckRes.push('no');
     }
   }
-  console.log(`threeTimes ${repeatThreeTimes}`);
+  console.log(`threeTimes ${3}`);
   return arrCheckRes;
 };
 

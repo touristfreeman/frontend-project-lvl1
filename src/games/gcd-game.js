@@ -1,8 +1,8 @@
+import brainGame from '../index';
 
-import {
-  Greet, getNameSayHi, sayRules, cons, car, cdr, askQuestion, getUseAnswer,
-  getRandInt, checkUseAnswAndSayRes,
-} from '../index';
+const cons = (x, y) => (f) => f(x, y);
+const car = (p1) => p1((x) => x);
+const cdr = (p2) => p2((x, y) => y);
 
 const getPrimInt = (num) => (num % 2 !== 0 || num === 2 ? num : getPrimInt(num + 1));
 
@@ -58,6 +58,14 @@ const getCommonFact = (arr1, arr2, arr3 = [], count1 = 0) => {
   return getCommonFact(arr1, arr2, arr3, count1 + 1);
 };
 
+// ---
+
+const questionOfuse = getArrQuest(arrInt, arrOperator);
+const correctАnswer = getArrCorrAnsw(arrInt, arrOperator);
+const rule = 'Find the greatest common divisor of given numbers.';
+
+export default () => brainGame(rule, questionOfuse, correctАnswer);
+/*
 const gameGcd = () => {
   Greet();
   const name = getNameSayHi();
@@ -76,4 +84,4 @@ const gameGcd = () => {
   };
   return coutnToThree();
 };
-export default gameGcd;
+*/

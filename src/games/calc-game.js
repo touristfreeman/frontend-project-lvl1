@@ -1,65 +1,67 @@
+import brainGame from '../index';
 
-import {
-  getRandInt, car, cdr, cons,
-} from '../index';
+const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
-const cons = (x, y) => (f) => f(x, y);
-const car = (p1) => p1((x) => x);
-const cdr = (p2) => p2((x, y) => y);
+const getArrRandomOperator = () => {
+  const operators = ['-', '+', '*'];
+  const array = [];
 
-const getArithOperat = (num1, num2, operator) => {
-  let operationResult = num1 * num2;
+  for (let i = 0; i < 3; i += 1) {
+    array.push(operators[getRandInt(2)]);
+  }
+  console.log(array);
+  return array;
+};
+
+const getArrRandomInt = () => {
+  const array = [];
+
+  for (let i = 0; i < 6; i += 1) {
+    array.push(getRandInt(99));
+  }
+  console.log(array);
+  return array;
+};
+
+const getArrQuest = (arrI, arrO, array = []) => {
+  let j = 0;
+
+  for (let i = 0; i <= arrI.length - 1; i += 2) {
+    array.push(`${arrI[i]} ${arrO[j]} ${arrI[i + 1]}`);
+    j += 1;
+  }
+  return array;
+};
+
+
+const getCorrAnsw = (num1, num2, operator) => {
+  let expressionResult = num1 * num2;
 
   if (operator === '-') {
-    operationResult = num1 - num2;
+    expressionResult = num1 - num2;
   } else if (operator === '+') {
-    operationResult = num1 + num2;
+    expressionResult = num1 + num2;
   } else {
-    operationResult = num1 * num2;
+    expressionResult = num1 * num2;
   }
-  const QuestionToUse = `${num1} ${operator} ${num2}`;
-  return cons(operationResult, QuestionToUse);
+  return expressionResult;
 };
 
-const getRandomOperator = () => {
-  const operators = ['-', '+', '*'];
-  return operators[getRandInt(2)];
+const getArrCorrAnsw = (arrI, arrO, array = []) => {
+  let j = 0;
+
+  for (let i = 0; i <= arrI.length - 1; i += 2) {
+    array.push(getCorrAnsw(arrI[i], arrI[i + 1], arrO[j]));
+    j += 1;
+  }
+  return array;
 };
 
-const getRigthAnsw = () => {
+const arrOperator = getArrRandomOperator();
+const arrInt = getArrRandomInt();
 
-}
-
-const getArrResArithOperat = () => {
-  let arrArifOper = [];
-  
-  for
-}
-
-getArithOperat(getRandInt(99), getRandInt(99), getRandomOperator());
-
-const questionOfuse = cdr(arrQuestionOfuse());
-const correctАnswer = car(ResArithOperat);
+const questionOfuse = getArrQuest(arrInt, arrOperator);
+const correctАnswer = getArrCorrAnsw(arrInt, arrOperator);
 const rule = 'What is the result of the expression?';
 
 export default () => brainGame(rule, questionOfuse, correctАnswer);
-
-/*
-const gameBrainCalc = () => {
-  Greet();
-  const name = getNameSayHi();
-  sayRules('What is the result of the expression?');
-
-  const coutnToThree = (count = 0) => {
-    if (count === 3) {
-      return console.log(`Congratulations, ${name}`);
-    }
-    const ResultArithOper = getArithOperat(getRandInt(99), getRandInt(99), getRandomOperator());
-    askQuestion(cdr(ResultArithOper));
-    const checkResult = checkUseAnswAndSayRes((car(ResultArithOper)), getUseAnswer(), name);
-    return checkResult ? coutnToThree(count + 1) : null;
-  };
-  return coutnToThree();
-};
-export default gameBrainCalc;
-*/

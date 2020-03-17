@@ -1,6 +1,5 @@
 import readlineSync from 'readline-sync';
 
-
 const Greet = () => console.log('Welcome to the Brain Games!');
 const sayRules = (rules) => console.log(rules);
 const getNameSayHi = () => {
@@ -19,9 +18,7 @@ const checkUseAnswAndSayRes = (correctAnswer, useAnswer, useName) => {
   return console.log(`\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);
 };
 
-export const repeatThreeTimes = 3;
-
-export const brainGame = (rule, questionOfuse, correctАnswerArr) => {
+export default (rule, questionOfuse, correctАnswerArr) => {
   Greet();
   const name = getNameSayHi();
   sayRules(rule);
