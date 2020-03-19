@@ -6,7 +6,7 @@ const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 const getArrRandInt = () => {
   const array = [];
   for (let i = 0; i < 3; i += 1) {
-    array.push(getRandInt(9) + getRandInt(9))
+    array.push(getRandInt(9) + getRandInt(9));
   }
   return array;
 };
@@ -21,7 +21,7 @@ const checkPrimInt = (num, count = 2) => {
 const checArrkPrimInt = (arrNum) => {
   const arrayResult = [];
   for (let i = 0; i < 3; i += 1) {
-    arrayResult.push(checkPrimInt(arrNum[i]))
+    arrayResult.push(checkPrimInt(arrNum[i]));
   }
   return arrayResult;
 };
