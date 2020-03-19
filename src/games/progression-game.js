@@ -1,16 +1,15 @@
-import {
-  Greet, getNameSayHi, sayRules, car, cdr, askQuestion, getUseAnswer,
-  getRandInt, checkUseAnswAndSayRes, cons,
-} from '../index';
+import brainGame from '../index';
+
+const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
 const getNumberSeries = () => {
-  const initialNum = getRandInt(9);
+  const initialNumber = getRandInt(9);
   const difference = getRandInt(9);
 
-  const getNumArray = (arr = [initialNum], count = 0) => {
+  const getNumArray = (arr = [initialNumber], count = 0) => {
     const array = arr;
     if (count >= 9) {
-      return array; // или даже возвращаем пару, если понадобится или пару вернем из внешенй функции
+      return array;
     }
     array.push(array[count] + difference);
     return getNumArray(array, count + 1);
@@ -18,36 +17,49 @@ const getNumberSeries = () => {
   return getNumArray();
 };
 
-const getStringNumSeries = (numberSeries, colon, stirnForUse = '', count = 0) => {
-  if (count > 9) {
-    return cons(stirnForUse, numberSeries[colon]);
+const getArrNumberSeries = (resArray = []) => {
+  for (let i = 0; i < 3; i += 1) {
+    resArray.push(getNumberSeries());
   }
-
-  if (colon === count) {
-    const string = `${stirnForUse} ..`;
-    return getStringNumSeries(numberSeries, colon, string, count + 1);
-  }
-
-  const string = `${stirnForUse} ${numberSeries[count]}`;
-  return getStringNumSeries(numberSeries, colon, string, count + 1);
+  return resArray;
 };
 
-const gameBrainProgression = () => {
-  Greet();
-  const name = getNameSayHi();
-  sayRules('What number is missing in the progression?');
-
-  const coutnToThree = (count = 0) => {
-    if (count === 3) {
-      return console.log(`Congratulations, ${name}`);
-    }
-
-    const stringNumSeries = getStringNumSeries(getNumberSeries(), getRandInt(8));
-    askQuestion(car(stringNumSeries));
-    console.log(`hint ${cdr(stringNumSeries)}`);
-    const checkResult = checkUseAnswAndSayRes(cdr(stringNumSeries), getUseAnswer(), name);
-    return checkResult ? coutnToThree(count + 1) : null;
-  };
-  return coutnToThree();
+const getArrColon = (resArray = []) => {
+  for (let i = 0; i < 3; i += 1) {
+    resArray.push(getRandInt(8));
+  }
+  return resArray;
 };
-export default gameBrainProgression;
+
+const getArrColonValue = (serNum, colon, resArray = []) => {
+  const getColonValue = (seriesNum, colonValue) => seriesNum[colonValue];
+
+  for (let i = 0; i < serNum.length; i += 1) {
+    resArray.push(getColonValue(serNum[i], colon[i]));
+  }
+  return resArray;
+};
+
+const getStringNumSeries = (numberSeries, colon) => {
+  const arrWishConon = numberSeries;
+  arrWishConon.splice(colon, 1, '..');
+  return arrWishConon;
+};
+
+const getArrStringNumSeries = (arr, arrColon, resArray = []) => {
+  for (let i = 0; i < arr.length; i += 1) {
+    resArray.push(getStringNumSeries(arr[i], arrColon[i]));
+  }
+  return resArray;
+};
+
+const arrRandomColon = getArrColon();
+const arrNumberSeries = getArrNumberSeries();
+const arrColonValue = getArrColonValue(arrNumberSeries, arrRandomColon);
+const arrStringNumSeries = getArrStringNumSeries(arrNumberSeries, arrRandomColon);
+
+const questionOfuse = arrStringNumSeries;
+const correctАnswer = arrColonValue;
+const rule = 'What number is missing in the progression?';
+
+export default () => brainGame(rule, questionOfuse, correctАnswer);
