@@ -22,7 +22,7 @@ export default (rule, questionOfuse, correctАnswerArr) => {
   Greet();
   const name = getNameSayHi();
   sayRules(rule);
-  console.log(correctАnswerArr);
+  console.log(`hint - ${correctАnswerArr}`);
 
   const coutnToThree = (count = 0, countArr = 0) => {
     if (count === 3) {
