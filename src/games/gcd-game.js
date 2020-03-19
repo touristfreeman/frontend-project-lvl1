@@ -1,10 +1,18 @@
 import brainGame from '../index';
 
-const cons = (x, y) => (f) => f(x, y);
-const car = (p1) => p1((x) => x);
-const cdr = (p2) => p2((x, y) => y);
 
 const getPrimInt = (num) => (num % 2 !== 0 || num === 2 ? num : getPrimInt(num + 1));
+
+const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
+
+const getArrRandNum = () => {
+  const array = [];
+  for (let i = 0; i < 3; i += 1) {
+    array.push(getRandInt(999));
+  }
+  return array;
+};
+
 
 const getSimpleFact = (num, facCount = 2, newArrFactors = []) => {
   if (num === 1) {
@@ -12,76 +20,60 @@ const getSimpleFact = (num, facCount = 2, newArrFactors = []) => {
   }
 
   const primeInt = getPrimInt(facCount);
-
   if (num % primeInt === 0) {
     newArrFactors.push(primeInt);
     return getSimpleFact(num / primeInt, facCount, newArrFactors);
   }
-
   return getSimpleFact(num, facCount + 1, newArrFactors);
 };
 
-const findCopyFactor = (arr1Count, array2, arr2Count = 0) => {
-  if (arr2Count > array2.length - 1) {
-    return cons(arr1Count, 'array2 over');
-  }
 
-  if (arr1Count === array2[arr2Count]) {
-    return cons(arr1Count, arr2Count);
+const getArrSimpleFact = (arr, array = []) => {
+  for (let i = 0; i < 3; i += 1) {
+    array.push(getSimpleFact(arr[i]));
   }
-
-  return findCopyFactor(arr1Count, array2, arr2Count + 1);
+  return array;
 };
 
-const getProdFactors = (arrCommFactor, count = 0) => {
-  if (count === arrCommFactor.length - 1) {
-    return arrCommFactor[count];
+const getGCD = (arrFact1, arrFact2) => {
+  let arr3 = 1;
+  for (let i = 0; i <= arrFact1.length - 1; i += 1) {
+    for (let j = 0; j <= arrFact1.length - 1; j += 1) {
+      if (arrFact1[i] === arrFact2[j]) {
+        arr3 *= arrFact2[j];
+        arrFact2.splice(j, 1);
+        break;
+      }
+    }
   }
-  return arrCommFactor[count] * getProdFactors(arrCommFactor, count + 1);
+  return arr3;
 };
 
-const getCommonFact = (arr1, arr2, arr3 = [], count1 = 0) => {
-  const currConmmFac = arr3;
-  const pairFactors = findCopyFactor(arr1[count1], arr2);
+const getArrGCD = (arr1, arr2) => {
+  const array = [];
 
-  if (count1 >= arr1.length - 1) {
-    currConmmFac.push(car(pairFactors));
-    return getProdFactors(arr3);
+  for (let i = 0; i < 3; i += 1) {
+    array.push(getGCD(arr1[i], arr2[i]));
   }
-
-  if (cdr(pairFactors) === 'array2 over') {
-    return getCommonFact(arr1, arr2, arr3, count1 + 1);
-  }
-
-  currConmmFac.push(car(pairFactors));
-  arr2.splice(cdr(pairFactors), 1);
-  return getCommonFact(arr1, arr2, arr3, count1 + 1);
+  return array;
 };
 
-// ---
+const getArrQuest = (arr1, arr2, array = []) => {
+  for (let i = 0; i <= arr1.length - 1; i += 1) {
+    array.push(`${arr1[i]} ${arr2[i]}`);
+  }
+  return array;
+};
 
-const questionOfuse = getArrQuest(arrInt, arrOperator);
-const correctАnswer = getArrCorrAnsw(arrInt, arrOperator);
+const arrRandNum1 = getArrRandNum(getRandInt(999));
+const arrRandNum2 = getArrRandNum(getRandInt(999));
+const arrSimpleFact1 = getArrSimpleFact(arrRandNum1);
+const arrSimpleFact2 = getArrSimpleFact(arrRandNum2);
+const arrGCD = getArrGCD(arrSimpleFact1, arrSimpleFact2);
+const arrQuest = getArrQuest(arrRandNum1, arrRandNum2);
+
+const questionOfuse = arrQuest;
+const correctАnswer = arrGCD;
 const rule = 'Find the greatest common divisor of given numbers.';
 
 export default () => brainGame(rule, questionOfuse, correctАnswer);
-/*
-const gameGcd = () => {
-  Greet();
-  const name = getNameSayHi();
-  sayRules('Find the greatest common divisor of given numbers.');
-
-  const coutnToThree = (count = 0) => {
-    if (count === 3) {
-      return console.log(`Congratulations, ${name}`);
-    }
-    const twoRandIn = cons(getRandInt(999), getRandInt(999));
-    const corrAnsw = getCommonFact(getSimpleFact(car(twoRandIn)), getSimpleFact(cdr(twoRandIn)));
-    console.log(`hint ${corrAnsw}`);
-    askQuestion(`${car(twoRandIn)} ${cdr(twoRandIn)}`);
-    const checkResult = checkUseAnswAndSayRes(corrAnsw, getUseAnswer(), name);
-    return checkResult ? coutnToThree(count + 1) : null;
-  };
-  return coutnToThree();
-};
-*/
