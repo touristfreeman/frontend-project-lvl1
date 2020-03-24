@@ -19,4 +19,5 @@ const getArrPairQuestAndAnsw = (count, arrPair = []) => {
   return getArrPairQuestAndAnsw(count - 1, arrPair);
 };
 
-export default () => runBrainGame('Answer "yes" if the number is even, otherwise answer "no".', getArrPairQuestAndAnsw(totalCounter));
+const rule = 'What is the result of the expression?';
+export default () => runBrainGame(rule, getArrPairQuestAndAnsw(totalCounter));

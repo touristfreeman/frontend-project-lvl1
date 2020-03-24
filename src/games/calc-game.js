@@ -23,12 +23,13 @@ const getArrPairQuestAndAnsw = (count, arrPair = []) => {
   const number2 = getRandInt(99);
   const operator = getOperator();
 
-  const questinon = `${number1} ${operator} ${number2}`;
+  const question = `${number1} ${operator} ${number2}`;
   const answer = String(getAnswer(number1, number2, operator));
   // console.log(`answer ${String(answer)}`);
-  arrPair.push(cons(questinon, answer));
+  arrPair.push(cons(question, answer));
 
   return getArrPairQuestAndAnsw(count - 1, arrPair);
 };
 
-export default () => runBrainGame('What is the result of the expression?', getArrPairQuestAndAnsw(totalCounter));
+const rule = 'What is the result of the expression?';
+export default () => runBrainGame(rule, getArrPairQuestAndAnsw(totalCounter));

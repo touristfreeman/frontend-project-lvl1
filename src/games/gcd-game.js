@@ -1,16 +1,7 @@
-import { runBrainGame } from '../index';
-import getRandInt from './utils';
+import { runBrainGame, totalCounter } from '../index';
+import { getRandInt, cons } from './utils';
 
-const getPrimInt = (num) => (num % 2 !== 0 || num === 2 ? num : getPrimInt(num + 1));
-
-const getArrRandNum = () => {
-  const array = [];
-  for (let i = 0; i < 3; i += 1) {
-    array.push(getRandInt(999));
-  }
-  return array;
-};
-
+const getPrimInt = (numP) => (numP % 2 !== 0 || numP === 2 ? numP : getPrimInt(numP + 1));
 
 const getSimpleFact = (num, facCount = 2, newArrFactors = []) => {
   if (num === 1) {
@@ -25,53 +16,38 @@ const getSimpleFact = (num, facCount = 2, newArrFactors = []) => {
   return getSimpleFact(num, facCount + 1, newArrFactors);
 };
 
-
-const getArrSimpleFact = (arr, array = []) => {
-  for (let i = 0; i < 3; i += 1) {
-    array.push(getSimpleFact(arr[i]));
-  }
-  return array;
-};
-
-const getGCD = (arrFact1, arrFact2) => {
-  let arr3 = 1;
-  for (let i = 0; i <= arrFact1.length - 1; i += 1) {
-    for (let j = 0; j <= arrFact1.length - 1; j += 1) {
-      if (arrFact1[i] === arrFact2[j]) {
-        arr3 *= arrFact2[j];
-        arrFact2.splice(j, 1);
+const getGreatestCommFactor = (factors1, factors2) => {
+  let CommFactor = 1;
+  for (let i = 0; i <= factors1.length - 1; i += 1) {
+    for (let j = 0; j <= factors1.length - 1; j += 1) {
+      if (factors1[i] === factors2[j]) {
+        CommFactor *= factors2[j];
+        factors2.splice(j, 1);
         break;
       }
     }
   }
-  return arr3;
+  return CommFactor;
 };
 
-const getArrGCD = (arr1, arr2) => {
-  const array = [];
-
-  for (let i = 0; i < 3; i += 1) {
-    array.push(getGCD(arr1[i], arr2[i]));
+const getArrPairQuestAndAnsw = (count, arrPair = []) => {
+  if (count === 0) {
+    return arrPair;
   }
-  return array;
+  // проверочные два числ 680 и 612. Общий делитель 68
+  const number1 = getRandInt(999); // 680;
+  const number2 = getRandInt(999); // 612;
+  const question = `${number1} ${number2}`;
+  // console.log(question);
+  const simplFactors1 = getSimpleFact(number1);
+  const simplFactors2 = getSimpleFact(number2);
+  // console.log(simplFactors1);
+  // console.log(simplFactors2);
+  const answer = String(getGreatestCommFactor(simplFactors1, simplFactors2));
+  // console.log(answer);
+  arrPair.push(cons(question, answer));
+  return getArrPairQuestAndAnsw(count - 1, arrPair);
 };
 
-const getArrQuest = (arr1, arr2, array = []) => {
-  for (let i = 0; i <= arr1.length - 1; i += 1) {
-    array.push(`${arr1[i]} ${arr2[i]}`);
-  }
-  return array;
-};
-
-const arrRandNum1 = getArrRandNum(getRandInt(999));
-const arrRandNum2 = getArrRandNum(getRandInt(999));
-const arrSimpleFact1 = getArrSimpleFact(arrRandNum1);
-const arrSimpleFact2 = getArrSimpleFact(arrRandNum2);
-const arrGCD = getArrGCD(arrSimpleFact1, arrSimpleFact2);
-const arrQuest = getArrQuest(arrRandNum1, arrRandNum2);
-
-const questionOfuse = arrQuest;
-const correctАnswer = arrGCD;
 const rule = 'Find the greatest common divisor of given numbers.';
-
-export default () => runBrainGame(rule, questionOfuse, correctАnswer);
+export default () => runBrainGame(rule, getArrPairQuestAndAnsw(totalCounter));
