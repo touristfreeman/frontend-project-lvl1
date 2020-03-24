@@ -1,32 +1,25 @@
 
-import runBrainGame from '../index';
+import { runBrainGame, totalCounter } from '../index';
+import { getRandInt, cons } from './utils';
 
-const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
-
-const getArrQuestionOfuse = (count = 0, array = []) => {
-  if (count === 3) {
-    return array;
+const getArrPairQuestAndAnsw = (count, arrPair = []) => {
+  if (count === 0) {
+    return arrPair;
   }
-  array.push(getRandInt(99));
-  return getArrQuestionOfuse(count + 1, array);
+
+  const randIt = getRandInt(99);
+  let answer = '';
+
+  if (randIt % 2 === 0) {
+    answer = 'yes'; // взм, здесь нужно сохранять будет у других функций сразу строку
+  } else {
+    answer = 'no';
+  }
+  arrPair.push(cons(randIt, answer));
+  return getArrPairQuestAndAnsw(count - 1, arrPair);
 };
 
-const checkNumIsEven = (questionOfuse) => {
-  const arrCheckRes = [];
-
-  for (let i = 0; i <= 2; i += 1) {
-    if (questionOfuse[i] % 2 === 0) {
-      arrCheckRes.push('yes');
-    } else {
-      arrCheckRes.push('no');
-    }
-  }
-  console.log(`threeTimes ${3}`);
-  return arrCheckRes;
-};
-
-const questionOfuse = getArrQuestionOfuse();
-const correctАnswer = checkNumIsEven(questionOfuse);
+const arrPairQuestAndAnsw = getArrPairQuestAndAnsw(totalCounter);
 const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-export default () => runBrainGame(rule, questionOfuse, correctАnswer);
+export default () => runBrainGame(rule, arrPairQuestAndAnsw);

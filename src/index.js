@@ -1,36 +1,32 @@
 import readlineSync from 'readline-sync';
 
-const Greet = () => console.log('Welcome to the Brain Games!');
-const sayRules = (rules) => console.log(rules);
-const getNameSayHi = () => {
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hi ${name} !`);
-  return name;
-};
-const askQuestion = (question) => console.log(`Question: ${question}`);
-const getUseAnswer = () => readlineSync.question('Your answer: ');
-
 const checkUseAnswAndSayRes = (correctAnswer, useAnswer, useName) => {
-  if (String(correctAnswer) === useAnswer) {
+  if (correctAnswer === useAnswer) { // убрать типизацию
     console.log('Correct!');
     return true;
   }
   return console.log(`\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);
 };
 
-export default (rule, questionOfuse, correctАnswerArr) => {
-  Greet();
-  const name = getNameSayHi();
-  sayRules(rule);
-  console.log(`hint - ${correctАnswerArr}`);
+const car = (p1) => p1((x) => x);
+const cdr = (p2) => p2((x, y) => y);
 
-  const coutnToThree = (count = 0, countArr = 0) => {
+export const totalCounter = 3;
+
+export const runBrainGame = (rule, arrPair) => {
+  console.log('Welcome to the Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(rule);
+
+  const coutnToThree = (count = 0, arrCount = 0) => {
     if (count === 3) {
       return console.log(`Congratulations, ${name}`);
     }
-    askQuestion(questionOfuse[countArr]);
-    const checkResult = checkUseAnswAndSayRes(correctАnswerArr[countArr], getUseAnswer(), name);
-    return checkResult ? coutnToThree(count + 1, countArr + 1) : null;
+
+    console.log(`hint - ${cdr(arrPair[arrCount])}`);
+    console.log(`Question: ${car(arrPair[arrCount])}`);
+    const checkResult = checkUseAnswAndSayRes(cdr(arrPair[arrCount]), readlineSync.question('Your answer: '), name);
+    return checkResult ? coutnToThree(count + 1, arrCount + 1) : null;
   };
   return coutnToThree();
 };

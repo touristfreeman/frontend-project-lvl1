@@ -1,8 +1,7 @@
-import runBrainGame from '../index';
+import { runBrainGame } from '../index';
+import getRandInt from './utils';
 
 const getPrimInt = (num) => (num % 2 !== 0 || num === 2 ? num : getPrimInt(num + 1));
-
-const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
 const getArrRandNum = () => {
   const array = [];

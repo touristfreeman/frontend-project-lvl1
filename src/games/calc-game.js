@@ -1,6 +1,5 @@
-import runBrainGame from '../index';
-
-const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
+import { runBrainGame } from '../index';
+import getRandInt from './utils';
 
 const getArrRandomOperator = () => {
   const operators = ['-', '+', '*'];
