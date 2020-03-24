@@ -23,7 +23,7 @@ export const runBrainGame = (rule, arrPair) => {
       return console.log(`Congratulations, ${name}`);
     }
 
-    console.log(`hint - ${cdr(arrPair[arrCount])}`);
+    console.log(`hint: ${cdr(arrPair[arrCount])}`);
     console.log(`Question: ${car(arrPair[arrCount])}`);
     const checkResult = checkUseAnswAndSayRes(cdr(arrPair[arrCount]), readlineSync.question('Your answer: '), name);
     return checkResult ? coutnToThree(count + 1, arrCount + 1) : null;

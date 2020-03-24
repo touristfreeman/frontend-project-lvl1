@@ -7,19 +7,16 @@ const getArrPairQuestAndAnsw = (count, arrPair = []) => {
     return arrPair;
   }
 
-  const randIt = getRandInt(99);
+  const question = getRandInt(99);
   let answer = '';
 
-  if (randIt % 2 === 0) {
-    answer = 'yes'; // взм, здесь нужно сохранять будет у других функций сразу строку
+  if (question % 2 === 0) {
+    answer = 'yes';
   } else {
     answer = 'no';
   }
-  arrPair.push(cons(randIt, answer));
+  arrPair.push(cons(question, answer));
   return getArrPairQuestAndAnsw(count - 1, arrPair);
 };
 
-const arrPairQuestAndAnsw = getArrPairQuestAndAnsw(totalCounter);
-const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
-
-export default () => runBrainGame(rule, arrPairQuestAndAnsw);
+export default () => runBrainGame('Answer "yes" if the number is even, otherwise answer "no".', getArrPairQuestAndAnsw(totalCounter));
