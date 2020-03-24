@@ -1,4 +1,4 @@
-import brainGame from '../index';
+import runBrainGame from '../index';
 
 const getPrimInt = (num) => (num % 2 !== 0 || num === 2 ? num : getPrimInt(num + 1));
 
@@ -75,4 +75,4 @@ const questionOfuse = arrQuest;
 const correctАnswer = arrGCD;
 const rule = 'Find the greatest common divisor of given numbers.';
 
-export default () => brainGame(rule, questionOfuse, correctАnswer);
+export default () => runBrainGame(rule, questionOfuse, correctАnswer);

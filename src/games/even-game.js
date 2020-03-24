@@ -1,5 +1,5 @@
 
-import brainGame from '../index';
+import runBrainGame from '../index';
 
 const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
@@ -29,4 +29,4 @@ const questionOfuse = getArrQuestionOfuse();
 const correctАnswer = checkNumIsEven(questionOfuse);
 const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-export default () => brainGame(rule, questionOfuse, correctАnswer);
+export default () => runBrainGame(rule, questionOfuse, correctАnswer);

@@ -1,5 +1,5 @@
 
-import brainGame from '../index';
+import runBrainGame from '../index';
 
 const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
@@ -33,4 +33,4 @@ const questionOfuse = arrRandInt;
 const correctАnswer = resCheckPrimtIn;
 const rule = 'Find the greatest common divisor of given numbers.';
 
-export default () => brainGame(rule, questionOfuse, correctАnswer);
+export default () => runBrainGame(rule, questionOfuse, correctАnswer);

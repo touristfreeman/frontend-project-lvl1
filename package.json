@@ -18,6 +18,7 @@
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
   },
+  "keywords": [],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/touristfreeman/frontend-project-lvl1.git"

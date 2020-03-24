@@ -1,4 +1,4 @@
-import brainGame from '../index';
+import runBrainGame from '../index';
 
 const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
@@ -64,4 +64,4 @@ const questionOfuse = getArrQuest(arrInt, arrOperator);
 const correctАnswer = getArrCorrAnsw(arrInt, arrOperator);
 const rule = 'What is the result of the expression?';
 
-export default () => brainGame(rule, questionOfuse, correctАnswer);
+export default () => runBrainGame(rule, questionOfuse, correctАnswer);

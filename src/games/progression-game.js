@@ -1,4 +1,4 @@
-import brainGame from '../index';
+import runBrainGame from '../index';
 
 const getRandInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
@@ -62,4 +62,4 @@ const questionOfuse = arrStringNumSeries;
 const correctАnswer = arrColonValue;
 const rule = 'What number is missing in the progression?';
 
-export default () => brainGame(rule, questionOfuse, correctАnswer);
+export default () => runBrainGame(rule, questionOfuse, correctАnswer);
