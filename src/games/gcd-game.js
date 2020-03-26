@@ -38,13 +38,9 @@ const getArrPairQuestAndAnsw = (count, arrPair = []) => {
   const number1 = getRandInt(999); // 680;
   const number2 = getRandInt(999); // 612;
   const question = `${number1} ${number2}`;
-  // console.log(question);
   const simplFactors1 = getSimpleFact(number1);
   const simplFactors2 = getSimpleFact(number2);
-  // console.log(simplFactors1);
-  // console.log(simplFactors2);
   const answer = String(getGreatestCommFactor(simplFactors1, simplFactors2));
-  // console.log(answer);
   arrPair.push(cons(question, answer));
   return getArrPairQuestAndAnsw(count - 1, arrPair);
 };
