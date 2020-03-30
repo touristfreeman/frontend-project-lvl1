@@ -17,7 +17,7 @@ const getPairArrQuestAndAnswer = (counter) => {
   for (let i = 0; i < counter; i += 1) {
     const randomInt = getRandInt(9);
     arrayQuestion.push(randomInt);
-    arrayAnswer.push(checkPrimInt(randomInt) % 2 === 0 ? 'yes' : 'no');
+    arrayAnswer.push(checkPrimInt(randomInt) ? 'yes' : 'no');
   }
   return cons(arrayQuestion, arrayAnswer);
 };
