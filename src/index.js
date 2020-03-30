@@ -1,32 +1,22 @@
 import readlineSync from 'readline-sync';
 
-const checkUseAnswAndSayRes = (correctAnswer, useAnswer, useName) => {
-  if (correctAnswer === useAnswer) { // убрать типизацию
-    console.log('Correct!');
-    return true;
-  }
-  return console.log(`\n'${useAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${useName}\n`);
-};
-
-const car = (p1) => p1((x) => x);
-const cdr = (p2) => p2((x, y) => y);
-
 export const totalCounter = 3;
 
-export const runBrainGame = (rule, arrPair) => {
+export const runBrainGame = (rule, quest, answ) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(rule);
 
-  const coutnToThree = (count = 0, arrCount = 0) => {
-    if (count === 3) {
-      return console.log(`Congratulations, ${name}`);
-    }
+  for (let i = 0; i < totalCounter; i += 1) {
+    console.log(`hint: ${answ[i]}`);
+    console.log(`Question: ${quest[i]}`);
+    const userAnswer = readlineSync.question('Your answer: ');
 
-    console.log(`hint: ${cdr(arrPair[arrCount])}`);
-    console.log(`Question: ${car(arrPair[arrCount])}`);
-    const checkResult = checkUseAnswAndSayRes(cdr(arrPair[arrCount]), readlineSync.question('Your answer: '), name);
-    return checkResult ? coutnToThree(count + 1, arrCount + 1) : null;
-  };
-  return coutnToThree();
+    if (userAnswer === answ[i]) {
+      console.log('Correct!');
+    } else {
+      return console.log(`\n'${userAnswer}' is wrong answer ;(. Correct answer was '${answ[i]}'. \nLet's try again, ${name}\n`);
+    }
+  }
+  return console.log(`Congratulations, ${name}`);
 };
