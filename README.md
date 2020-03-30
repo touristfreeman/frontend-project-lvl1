@@ -1,6 +1,5 @@
 <p><a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 
-[![Build Status](https://travis-ci.com/travis-ci/travis-web.svg?branch=master)](https://travis-ci.com/travis-ci/travis-web)</p>
 
 ![](https://github.com/touristfreeman/frontend-project-lvl1/workflows/Action%20-%20make%20lint/badge.svg)
 
@@ -20,4 +19,3 @@
 <p>brain-prime</p>
 <a href="https://asciinema.org/a/306316" target="_blank"><img src="https://asciinema.org/a/306316.svg" /></a>
 
-[![asciicast](https://asciinema.org/a/JHtzz3Xvrw3en9SgbZ1XzNXy4.svg)](https://asciinema.org/a/JHtzz3Xvrw3en9SgbZ1XzNXy4)

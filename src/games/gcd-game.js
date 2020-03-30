@@ -1,5 +1,5 @@
 import { runBrainGame, totalCounter } from '../index';
-import { getRandInt, cons } from './utils';
+import { getRandInt, cons } from '../utils';
 
 const getPrimInt = (numP) => (numP % 2 !== 0 || numP === 2 ? numP : getPrimInt(numP + 1));
 

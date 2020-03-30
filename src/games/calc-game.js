@@ -1,5 +1,5 @@
 import { runBrainGame, totalCounter } from '../index';
-import { getRandInt, cons } from './utils';
+import { getRandInt, cons } from '../utils';
 
 const getAnswer = (num1, num2, operator) => {
   let expressionResult = num1 * num2;

@@ -1,5 +1,5 @@
 import { runBrainGame, totalCounter } from '../index';
-import { getRandInt, cons } from './utils';
+import { getRandInt, cons } from '../utils';
 
 const getArrPairQuestAndAnsw = (counter, arrPair = []) => {
   if (counter === 0) {
