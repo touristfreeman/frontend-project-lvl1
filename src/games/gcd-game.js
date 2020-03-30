@@ -1,5 +1,7 @@
 import { runBrainGame, totalCounter } from '../index';
-import { getRandInt, cons } from '../utils';
+import {
+  getRandInt, cons, car, cdr,
+} from '../utils';
 
 const getPrimInt = (numP) => (numP % 2 !== 0 || numP === 2 ? numP : getPrimInt(numP + 1));
 
@@ -30,20 +32,24 @@ const getGreatestCommFactor = (factors1, factors2) => {
   return CommFactor;
 };
 
-const getArrPairQuestAndAnsw = (count, arrPair = []) => {
-  if (count === 0) {
-    return arrPair;
+const getPairArrQuestAndAnswer = (counter) => {
+  const arrayQuestion = [];
+  const arrayAnswer = [];
+
+  for (let i = 0; i < counter; i += 1) {
+    const number1 = getRandInt(999); // 680;
+    const number2 = getRandInt(999); // 612;
+    const simplFactors1 = getSimpleFact(number1);
+    const simplFactors2 = getSimpleFact(number2);
+    arrayQuestion.push(`${number1} ${number2}`);
+    arrayAnswer.push(String(getGreatestCommFactor(simplFactors1, simplFactors2)));
   }
-  // проверочные два числ 680 и 612. Общий делитель 68
-  const number1 = getRandInt(999); // 680;
-  const number2 = getRandInt(999); // 612;
-  const question = `${number1} ${number2}`;
-  const simplFactors1 = getSimpleFact(number1);
-  const simplFactors2 = getSimpleFact(number2);
-  const answer = String(getGreatestCommFactor(simplFactors1, simplFactors2));
-  arrPair.push(cons(question, answer));
-  return getArrPairQuestAndAnsw(count - 1, arrPair);
+  return cons(arrayQuestion, arrayAnswer);
 };
 
+const pairArrQuestAndAnswer = getPairArrQuestAndAnswer(totalCounter);
+const question = car(pairArrQuestAndAnswer);
+const answer = cdr(pairArrQuestAndAnswer);
 const rule = 'Find the greatest common divisor of given numbers.';
-export default () => runBrainGame(rule, getArrPairQuestAndAnsw(totalCounter));
+
+export default () => runBrainGame(rule, question, answer);

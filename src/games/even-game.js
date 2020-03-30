@@ -1,4 +1,3 @@
-
 import { runBrainGame, totalCounter } from '../index';
 import {
   getRandInt, cons, car, cdr,
