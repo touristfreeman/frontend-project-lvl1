@@ -1,7 +1,5 @@
-import { runBrainGame, totalCounter } from '../index';
-import {
-  getRandInt, cons, car, cdr,
-} from '../utils';
+import { runBrainGame, numberRounds } from '../index';
+import getRandInt from '../utils';
 
 const getnumberSeries = (numberSeries, differ, count = 0) => {
   if (count >= 9) {
@@ -11,24 +9,21 @@ const getnumberSeries = (numberSeries, differ, count = 0) => {
   return getnumberSeries(numberSeries, differ, count + 1);
 };
 
-const getPairArrQuestAndAnswer = (counter) => {
-  const arrayQuestion = [];
-  const arrayAnswer = [];
+const getGameData = () => {
+  const questions = [];
+  const answers = [];
 
-  for (let i = 0; i < counter; i += 1) {
+  for (let i = 0; i < numberRounds; i += 1) {
     const initialNumber = [getRandInt(15)];
     const difference = getRandInt(9);
     const collon = getRandInt(8);
     const seriesNumber = getnumberSeries(initialNumber, difference);
-    arrayQuestion.push(seriesNumber.splice(collon, 1, '..'));
-    arrayAnswer.push(String(collon));
+    questions.push(seriesNumber.splice(collon, 1, '..'));
+    answers.push(String(collon));
   }
-  return cons(arrayQuestion, arrayAnswer);
+  const data = [questions, answers];
+  return data;
 };
 
-const pairArrQuestAndAnswer = getPairArrQuestAndAnswer(totalCounter);
-const question = car(pairArrQuestAndAnswer);
-const answer = cdr(pairArrQuestAndAnswer);
 const rule = 'What number is missing in the progression?';
-
-export default () => runBrainGame(rule, question, answer);
+export default () => runBrainGame(rule, getGameData());
