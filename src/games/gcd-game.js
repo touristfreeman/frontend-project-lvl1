@@ -1,7 +1,5 @@
-import { runBrainGame, totalCounter } from '../index';
-import {
-  getRandInt, cons, car, cdr,
-} from '../utils';
+import { runBrainGame, numberRounds } from '../index';
+import getRandInt from '../utils';
 
 const getPrimInt = (numP) => (numP % 2 !== 0 || numP === 2 ? numP : getPrimInt(numP + 1));
 
@@ -32,24 +30,21 @@ const getGreatestCommFactor = (factors1, factors2) => {
   return CommFactor;
 };
 
-const getPairArrQuestAndAnswer = (counter) => {
-  const arrayQuestion = [];
-  const arrayAnswer = [];
+const getGameData = () => {
+  const questions = [];
+  const answers = [];
 
-  for (let i = 0; i < counter; i += 1) {
+  for (let i = 0; i < numberRounds; i += 1) {
     const number1 = getRandInt(999); // 680;
     const number2 = getRandInt(999); // 612;
     const simplFactors1 = getSimpleFact(number1);
     const simplFactors2 = getSimpleFact(number2);
-    arrayQuestion.push(`${number1} ${number2}`);
-    arrayAnswer.push(String(getGreatestCommFactor(simplFactors1, simplFactors2)));
+    questions.push(`${number1} ${number2}`);
+    answers.push(String(getGreatestCommFactor(simplFactors1, simplFactors2)));
   }
-  return cons(arrayQuestion, arrayAnswer);
+  const data = [questions, answers];
+  return data;
 };
 
-const pairArrQuestAndAnswer = getPairArrQuestAndAnswer(totalCounter);
-const question = car(pairArrQuestAndAnswer);
-const answer = cdr(pairArrQuestAndAnswer);
 const rule = 'Find the greatest common divisor of given numbers.';
-
-export default () => runBrainGame(rule, question, answer);
+export default () => runBrainGame(rule, getGameData());
