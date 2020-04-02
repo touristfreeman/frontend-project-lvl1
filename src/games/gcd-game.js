@@ -35,8 +35,8 @@ const getGameData = () => {
   const answers = [];
 
   for (let i = 0; i < numberRounds; i += 1) {
-    const number1 = getRandInt(999); // 680;
-    const number2 = getRandInt(999); // 612;
+    const number1 = getRandInt(1, 1000); // 680;
+    const number2 = getRandInt(1, 1000); // 612;
     const simplFactors1 = getSimpleFact(number1);
     const simplFactors2 = getSimpleFact(number2);
     questions.push(`${number1} ${number2}`);

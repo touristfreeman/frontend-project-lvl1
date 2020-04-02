@@ -14,15 +14,15 @@ const getAnswer = (num1, num2, operator) => {
   return expressionResult;
 };
 
-const getOperator = (oper = ['-', '+', '*']) => oper[getRandInt(2)];
+const getOperator = (oper = ['-', '+', '*']) => oper[getRandInt(1, 3)];
 
 const getGameData = () => {
   const questions = [];
   const answers = [];
 
   for (let i = 0; i < numberRounds; i += 1) {
-    const number1 = getRandInt(99);
-    const number2 = getRandInt(99);
+    const number1 = getRandInt(1, 100);
+    const number2 = getRandInt(1, 100);
     const operator = getOperator();
 
     questions.push(`${number1} ${operator} ${number2}`);

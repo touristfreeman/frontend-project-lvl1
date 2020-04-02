@@ -14,9 +14,9 @@ const getGameData = () => {
   const answers = [];
 
   for (let i = 0; i < numberRounds; i += 1) {
-    const initialNumber = [getRandInt(15)];
-    const difference = getRandInt(9);
-    const collon = getRandInt(8);
+    const initialNumber = [getRandInt(1, 15)];
+    const difference = getRandInt(1, 10);
+    const collon = getRandInt(0, 10);
     const seriesNumber = getnumberSeries(initialNumber, difference);
     questions.push(seriesNumber.splice(collon, 1, '..'));
     answers.push(String(collon));

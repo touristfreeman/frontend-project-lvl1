@@ -13,7 +13,7 @@ const getGameData = () => {
   const answers = [];
 
   for (let i = 0; i < numberRounds; i += 1) {
-    const randomInt = getRandInt(9);
+    const randomInt = getRandInt(0, 9);
     questions.push(randomInt);
     answers.push(checkPrimInt(randomInt) ? 'yes' : 'no');
   }
