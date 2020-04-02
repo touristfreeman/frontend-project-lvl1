@@ -1,23 +1,20 @@
-import { runBrainGame, totalCounter } from '../index';
-import {
-  getRandInt, cons, car, cdr,
-} from '../utils';
+import { runBrainGame, numberRounds } from '../index';
+import getRandInt from '../utils';
 
-const getPairArrQuestAndAnswer = (counter) => {
-  const arrayQuestion = [];
-  const arrayAnswer = [];
+const isEven = (num) => (num % 2 === 0);
 
-  for (let i = 0; i < counter; i += 1) {
-    const randomInt = getRandInt(99);
-    arrayQuestion.push(randomInt);
-    arrayAnswer.push(randomInt % 2 === 0 ? 'yes' : 'no');
+const getGameData = () => {
+  const questions = [];
+  const answers = [];
+
+  for (let i = 0; i < numberRounds; i += 1) {
+    const number = getRandInt(99);
+    questions.push(number);
+    answers.push(isEven(number) ? 'yes' : 'no');
   }
-  return cons(arrayQuestion, arrayAnswer);
+  const data = [questions, answers];
+  return data;
 };
 
-const pairArrQuestAndAnswer = getPairArrQuestAndAnswer(totalCounter);
-const question = car(pairArrQuestAndAnswer);
-const answer = cdr(pairArrQuestAndAnswer);
 const rule = 'What is the result of the expression?';
-
-export default () => runBrainGame(rule, question, answer);
+export default () => runBrainGame(rule, getGameData());
