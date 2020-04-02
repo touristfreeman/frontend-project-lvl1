@@ -1,7 +1,5 @@
-import { runBrainGame, totalCounter } from '../index';
-import {
-  getRandInt, cons, car, cdr,
-} from '../utils';
+import { runBrainGame, numberRounds } from '../index';
+import getRandInt from '../utils';
 
 const checkPrimInt = (num, count = 2) => {
   if (count === num) {
@@ -10,21 +8,18 @@ const checkPrimInt = (num, count = 2) => {
   return num % count === 0 ? false : checkPrimInt(num, count + 1);
 };
 
-const getPairArrQuestAndAnswer = (counter) => {
-  const arrayQuestion = [];
-  const arrayAnswer = [];
+const getGameData = () => {
+  const questions = [];
+  const answers = [];
 
-  for (let i = 0; i < counter; i += 1) {
+  for (let i = 0; i < numberRounds; i += 1) {
     const randomInt = getRandInt(9);
-    arrayQuestion.push(randomInt);
-    arrayAnswer.push(checkPrimInt(randomInt) ? 'yes' : 'no');
+    questions.push(randomInt);
+    answers.push(checkPrimInt(randomInt) ? 'yes' : 'no');
   }
-  return cons(arrayQuestion, arrayAnswer);
+  const data = [questions, answers];
+  return data;
 };
 
-const pairArrQuestAndAnswer = getPairArrQuestAndAnswer(totalCounter);
-const question = car(pairArrQuestAndAnswer);
-const answer = cdr(pairArrQuestAndAnswer);
 const rule = 'Find the greatest common divisor of given numbers.';
-
-export default () => runBrainGame(rule, question, answer);
+export default () => runBrainGame(rule, getGameData());
