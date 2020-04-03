@@ -1,46 +1,43 @@
 import { runBrainGame, numberRounds } from '../index';
-import getRandInt from '../utils';
+import { getRandInt, primeCheck } from '../utils';
 
-const getPrimInt = (numP) => (numP % 2 !== 0 || numP === 2 ? numP : getPrimInt(numP + 1));
+const getPrime = (number) => (primeCheck(number) ? number : getPrime(number + 1));
 
-const getSimpleFact = (num, facCount = 2, newArrFactors = []) => {
+const getPrimeFactors = (num, divider = 2, factors = []) => {
   if (num === 1) {
-    return newArrFactors;
+    return factors;
   }
-
-  const primeInt = getPrimInt(facCount);
-  if (num % primeInt === 0) {
-    newArrFactors.push(primeInt);
-    return getSimpleFact(num / primeInt, facCount, newArrFactors);
+  if (num % divider === 0) {
+    factors.push(divider);
+    return getPrimeFactors(num / divider, 2, factors);
   }
-  return getSimpleFact(num, facCount + 1, newArrFactors);
+  return getPrimeFactors(num, getPrime(divider + 1), factors);
 };
 
-const getGreatestCommFactor = (factors1, factors2) => {
-  let CommFactor = 1;
+const getGCD = (factors1, factors2) => {
+  let GCD = 1;
   for (let i = 0; i <= factors1.length - 1; i += 1) {
     for (let j = 0; j <= factors1.length - 1; j += 1) {
       if (factors1[i] === factors2[j]) {
-        CommFactor *= factors2[j];
+        GCD *= factors2[j];
         factors2.splice(j, 1);
         break;
       }
     }
   }
-  return CommFactor;
+  return GCD;
 };
 
 const getGameData = () => {
   const questions = [];
   const answers = [];
-
   for (let i = 0; i < numberRounds; i += 1) {
     const number1 = getRandInt(1, 1000); // 680;
     const number2 = getRandInt(1, 1000); // 612;
-    const simplFactors1 = getSimpleFact(number1);
-    const simplFactors2 = getSimpleFact(number2);
+    const simplFactors1 = getPrimeFactors(number1);
+    const simplFactors2 = getPrimeFactors(number2);
     questions.push(`${number1} ${number2}`);
-    answers.push(String(getGreatestCommFactor(simplFactors1, simplFactors2)));
+    answers.push(String(getGCD(simplFactors1, simplFactors2)));
   }
   const data = [questions, answers];
   return data;

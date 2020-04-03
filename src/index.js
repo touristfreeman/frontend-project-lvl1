@@ -6,7 +6,6 @@ export const runBrainGame = (rule, [questions, answers]) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(rule);
-  console.log(questions);
 
   for (let i = 0; i < numberRounds; i += 1) {
     console.log(`hint: ${answers[i]}`);
@@ -22,4 +21,4 @@ export const runBrainGame = (rule, [questions, answers]) => {
   return console.log(`Congratulations, ${name}`);
 };
 
-// hint уберу после завершения проекта
+// hint уберу после завершения проекта =)
