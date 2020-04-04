@@ -19,7 +19,7 @@ jobs:
       - run: npm install
       - run: npx eslint .
         env:
-        CI: true
+          CI: true
   coverage:
     needs: [test]
     name: coverage
