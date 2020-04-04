@@ -17,5 +17,20 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
+  coverage:
+    needs: [ test ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '12'
+    - run: npm install -g yarn
+    - run: yarn install
+    - run: yarn build
+    - uses: paambaati/codeclimate-action@v2.5.2
       env:
-        CI: true
+        CC_TEST_REPORTER_ID: 94932a7f11c47404f16a898b02da0cdec4be892426bfebc52a6de03ea27ca1de
+      with:
+        coverageCommand: yarn coverage
