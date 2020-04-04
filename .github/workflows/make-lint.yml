@@ -18,6 +18,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npx eslint .
+        env:
+        CI: true
   coverage:
     needs: [test]
     name: coverage
