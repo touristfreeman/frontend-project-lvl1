@@ -1,7 +1,7 @@
 import { runBrainGame, numberRounds } from '../index';
-import { getRandInt, primeCheck } from '../utils';
+import { getRandInt, isPrime } from '../utils';
 
-const getPrime = (number) => (primeCheck(number) ? number : getPrime(number + 1));
+const getPrime = (number) => (isPrime(number) ? number : getPrime(number + 1));
 
 const getPrimeFactors = (num, divider = 2, factors = []) => {
   if (num === 1) {

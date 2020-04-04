@@ -1,5 +1,5 @@
 import { runBrainGame, numberRounds } from '../index';
-import { getRandInt, primeCheck } from '../utils';
+import { getRandInt, isPrime } from '../utils';
 
 const getGameData = () => {
   const questions = [];
@@ -8,7 +8,7 @@ const getGameData = () => {
   for (let i = 0; i < numberRounds; i += 1) {
     const randomInt = getRandInt(0, 9);
     questions.push(randomInt);
-    answers.push(primeCheck(randomInt) ? 'yes' : 'no');
+    answers.push(isPrime(randomInt) ? 'yes' : 'no');
   }
   const data = [questions, answers];
   return data;
