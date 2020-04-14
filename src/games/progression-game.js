@@ -25,5 +25,5 @@ const getGameData = () => {
   return data;
 };
 
-const rule = 'What number is missing in the progression?';
-export default () => runBrainGame(rule, getGameData());
+const task = 'What number is missing in the progression?';
+export default () => runBrainGame(task, getGameData());

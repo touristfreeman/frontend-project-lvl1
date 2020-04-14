@@ -6,9 +6,6 @@ install-deps:
 start:
 	npx babel-node src/bin/brain-prime.js
 
-test-coverage:
-	npm test -- --coverage
-
 publish:
 	npm publish --dry-run
 	

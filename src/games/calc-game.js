@@ -32,5 +32,5 @@ const getGameData = () => {
   return data;
 };
 
-const rule = 'What is the result of the expression?';
-export default () => runBrainGame(rule, getGameData());
+const task = 'What is the result of the expression?';
+export default () => runBrainGame(task, getGameData());

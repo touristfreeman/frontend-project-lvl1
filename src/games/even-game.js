@@ -1,5 +1,5 @@
 import { runBrainGame, numberRounds } from '../index';
-import getRandInt from '../utils';
+import { getRandInt } from '../utils';
 
 const isEven = (num) => (num % 2 === 0);
 
@@ -16,5 +16,5 @@ const getGameData = () => {
   return data;
 };
 
-const rule = 'What is the result of the expression?';
-export default () => runBrainGame(rule, getGameData());
+const task = 'What is the result of the expression?';
+export default () => runBrainGame(task, getGameData());

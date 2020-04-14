@@ -43,5 +43,5 @@ const getGameData = () => {
   return data;
 };
 
-const rule = 'Find the greatest common divisor of given numbers.';
-export default () => runBrainGame(rule, getGameData());
+const task = 'Find the greatest common divisor of given numbers.';
+export default () => runBrainGame(task, getGameData());

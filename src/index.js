@@ -2,20 +2,21 @@ import readlineSync from 'readline-sync';
 
 export const numberRounds = 3;
 
-export const runBrainGame = (rule, [questions, answers]) => {
+export const runBrainGame = (task, gameData) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
-  console.log(rule);
+  console.log(`Hello ${name}`);
 
   for (let i = 0; i < numberRounds; i += 1) {
-    console.log(`hint: ${answers[i]}`);
-    console.log(`Question: ${questions[i]}`);
+    const [question, answer] = gameData[i];
+    console.log(`Question: ${question}`);
+    console.log(`hint: ${answer}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    if (userAnswer === answers[i]) {
+    if (userAnswer === answer) {
       console.log('Correct!');
     } else {
-      return console.log(`\n'${userAnswer}' is wrong answer ;(. Correct answer was '${answers[i]}'. \nLet's try again, ${name}\n`);
+      return console.log(`\n'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'. \nLet's try again, ${name}\n`);
     }
   }
   return console.log(`Congratulations, ${name}`);
