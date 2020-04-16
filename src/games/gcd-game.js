@@ -1,5 +1,5 @@
 import { runBrainGame, numberRounds } from '../index';
-import { getRandInt, isPrime } from '../utils';
+import { getRandInt } from '../utils';
 
 const getPrime = (number) => (isPrime(number) ? number : getPrime(number + 1));
 
@@ -39,8 +39,7 @@ const getGameData = () => {
     questions.push(`${number1} ${number2}`);
     answers.push(String(getGCD(simplFactors1, simplFactors2)));
   }
-  const data = [questions, answers];
-  return data;
+  return [questions, answers];
 };
 
 const task = 'Find the greatest common divisor of given numbers.';

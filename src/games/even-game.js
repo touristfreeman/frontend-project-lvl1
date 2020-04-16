@@ -8,12 +8,11 @@ const getGameData = () => {
   const answers = [];
 
   for (let i = 0; i < numberRounds; i += 1) {
-    const number = getRandInt(1, 100);
-    questions.push(number);
-    answers.push(isEven(number) ? 'yes' : 'no');
+    const question = getRandInt(1, 100);
+    questions.push(question);
+    answers.push(isEven(question) ? 'yes' : 'no');
   }
-  const data = [questions, answers];
-  return data;
+  return [questions, answers];
 };
 
 const task = 'What is the result of the expression?';

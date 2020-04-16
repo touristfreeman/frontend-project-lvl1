@@ -1,17 +1,23 @@
 import { runBrainGame, numberRounds } from '../index';
-import { getRandInt, isPrime } from '../utils';
+import { getRandInt } from '../utils';
+
+const isPrime = (num, count = 2) => {
+  if (count === num) {
+    return true;
+  }
+  return num % count === 0 ? false : isPrime(num, count + 1);
+};
 
 const getGameData = () => {
   const questions = [];
   const answers = [];
 
   for (let i = 0; i < numberRounds; i += 1) {
-    const randomInt = getRandInt(0, 9);
-    questions.push(randomInt);
-    answers.push(isPrime(randomInt) ? 'yes' : 'no');
+    const question = getRandInt(0, 9);
+    questions.push(question);
+    answers.push(isPrime(question) ? 'yes' : 'no');
   }
-  const data = [questions, answers];
-  return data;
+  return [questions, answers];
 };
 
 const task = 'Find the greatest common divisor of given numbers.';

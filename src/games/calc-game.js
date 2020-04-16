@@ -1,5 +1,5 @@
 import { runBrainGame, numberRounds } from '../index';
-import getRandInt from '../utils';
+import { getRandInt } from '../utils';
 
 const getAnswer = (num1, num2, operator) => {
   let expressionResult = num1 * num2;
@@ -28,8 +28,7 @@ const getGameData = () => {
     questions.push(`${number1} ${operator} ${number2}`);
     answers.push(String(getAnswer(number1, number2, operator)));
   }
-  const data = [questions, answers];
-  return data;
+  return [questions, answers];
 };
 
 const task = 'What is the result of the expression?';

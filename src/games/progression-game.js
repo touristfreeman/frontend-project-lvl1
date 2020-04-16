@@ -1,5 +1,5 @@
 import { runBrainGame, numberRounds } from '../index';
-import getRandInt from '../utils';
+import { getRandInt } from '../utils';
 
 const getnumberSeries = (numberSeries, differ, count = 0) => {
   if (count >= 9) {
@@ -21,8 +21,7 @@ const getGameData = () => {
     questions.push(seriesNumber.splice(collon, 1, '..'));
     answers.push(String(collon));
   }
-  const data = [questions, answers];
-  return data;
+  return [questions, answers];
 };
 
 const task = 'What number is missing in the progression?';
