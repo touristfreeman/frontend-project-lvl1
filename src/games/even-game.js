@@ -1,5 +1,5 @@
 import { runBrainGame, numberRounds } from '../index';
-import { getRandInt } from '../utils';
+import getRandInt from '../utils';
 
 const isEven = (num) => (num % 2 === 0);
 
