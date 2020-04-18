@@ -1,5 +1,5 @@
 import { runBrainGame, numberRounds } from '../index';
-import { getRandInt } from '../utils';
+import getRandInt from '../utils';
 
 const isPrime = (num, count = 2) => {
   if (count === num) {

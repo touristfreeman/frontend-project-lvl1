@@ -1,5 +1,5 @@
 import { runBrainGame, numberRounds } from '../index';
-import { getRandInt } from '../utils';
+import getRandInt from '../utils';
 
 const getnumberSeries = (numberSeries, differ, count = 0) => {
   if (count >= 9) {
