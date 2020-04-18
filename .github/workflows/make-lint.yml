@@ -16,12 +16,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-<<<<<<< HEAD
-      run: |
-=======
       - name: npm install, build
         run: |
->>>>>>> 53a6d56ab847ed265670f5c1bafc56b2c722cccc
           make install
           make build
       - run: npx eslint .
