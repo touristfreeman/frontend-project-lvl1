@@ -2,20 +2,20 @@ import { runBrainGame, numberRounds } from '../index';
 import getRandInt from '../utils';
 
 const getGCD = (num1, num2) => {
-  const lagNumber = (num1 > num2) ? num1 : num2;
-  const lowNumber = (num1 < num2) ? num1 : num2;
-
-  return (lagNumber % lowNumber === 0) ? lowNumber : getGCD(lagNumber % lowNumber, lowNumber);
+  if (num2 === 0) {
+    return num1;
+  }
+  return getGCD(num2, num1 % num2);
 };
 
 const getGameData = () => {
   const questions = [];
   const answers = [];
   for (let i = 0; i < numberRounds; i += 1) {
-    const num1 = getRandInt(1, 1000); // 680;
-    const num2 = getRandInt(1, 1000); // 612;
-    questions.push(`${num1} ${num2}`);
-    answers.push(String(getGCD(num1, num2)));
+    const number1 = getRandInt(1, 1000); // 680;
+    const number2 = getRandInt(1, 1000); // 612;
+    questions.push(`${number1} ${number2}`);
+    answers.push(String(getGCD(number1, number2)));
   }
   return [questions, answers];
 };
