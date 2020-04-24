@@ -1,11 +1,18 @@
 import { runBrainGame, numberRounds } from '../index';
 import getRandInt from '../utils';
 
-const isPrime = (num, count = 2) => {
-  if (count === num) {
-    return true;
+const isPrime = (number) => {
+  if (number < 2) {
+    return false;
   }
-  return num % count === 0 ? false : isPrime(num, count + 1);
+
+  for (let i = 2; i <= number / 2; i += 1) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
 };
 
 const getGameData = () => {
@@ -14,11 +21,11 @@ const getGameData = () => {
 
   for (let i = 0; i < numberRounds; i += 1) {
     const question = getRandInt(0, 9);
-    questions.push(question);
+    questions.push(String(question));
     answers.push(isPrime(question) ? 'yes' : 'no');
   }
   return [questions, answers];
 };
 
-const task = 'Find the greatest common divisor of given numbers.';
+const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 export default () => runBrainGame(task, getGameData());

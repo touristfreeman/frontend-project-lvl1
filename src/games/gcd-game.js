@@ -1,12 +1,7 @@
 import { runBrainGame, numberRounds } from '../index';
 import getRandInt from '../utils';
 
-const getGCD = (num1, num2) => {
-  if (num2 === 0) {
-    return num1;
-  }
-  return getGCD(num2, num1 % num2);
-};
+const getGCD = (num1, num2) => (num2 === 0 ? num1 : getGCD(num2, num1 % num2));
 
 const getGameData = () => {
   const questions = [];

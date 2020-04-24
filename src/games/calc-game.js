@@ -14,7 +14,7 @@ const getAnswer = (num1, num2, operator) => {
   return expressionResult;
 };
 
-const getOperator = (oper = ['-', '+', '*']) => oper[getRandInt(1, 3)];
+const operator = () => ['-', '+', '*'][getRandInt(0, 2)];
 
 const getGameData = () => {
   const questions = [];
@@ -23,10 +23,11 @@ const getGameData = () => {
   for (let i = 0; i < numberRounds; i += 1) {
     const number1 = getRandInt(1, 100);
     const number2 = getRandInt(1, 100);
-    const operator = getOperator();
 
     questions.push(`${number1} ${operator} ${number2}`);
+    console.log(`operator1 ${operator}`);
     answers.push(String(getAnswer(number1, number2, operator)));
+    console.log(`operator2 ${operator}`);
   }
   return [questions, answers];
 };

@@ -5,10 +5,13 @@ export const numberRounds = 3;
 export const runBrainGame = (task, [questions, answers]) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
+  console.log(task);
   console.log(`Hello ${name}`);
 
   for (let i = 0; i < numberRounds; i += 1) {
-    const [question, answer] = [questions[i], answers[i]];
+    const question = questions[i];
+    const answer = answers[i];
+
     console.log(`Question: ${question}`);
     console.log(`hint: ${answer}`);
     const userAnswer = readlineSync.question('Your answer: ');
@@ -16,7 +19,9 @@ export const runBrainGame = (task, [questions, answers]) => {
     if (userAnswer === answer) {
       console.log('Correct!');
     } else {
-      console.log(`\n'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'. \nLet's try again, ${name}\n`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.`);
+      console.log(`Let's try again, ${name}!`);
+      return;
     }
   }
   console.log(`Congratulations, ${name}`);
