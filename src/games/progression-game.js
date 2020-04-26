@@ -25,7 +25,6 @@ const getGameData = () => {
     answers.push(String(arithProgression[hiddenMemberIndex]));
     arithProgression[hiddenMemberIndex] = '..';
     questions.push(arithProgression.join(' '));
-    
   }
   return [questions, answers];
 };
