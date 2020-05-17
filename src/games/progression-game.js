@@ -1,4 +1,7 @@
-import { runBrainGame, numberRounds } from '../index';
+import {
+  runBrainGame,
+  numberRounds
+} from '../index';
 import getRandInt from '../utils';
 
 const progressionLength = 10;
@@ -22,9 +25,13 @@ const getGameData = () => {
     const hiddenMemberIndex = getRandInt(1, progressionLength);
     const arithProgression = getArProgression(firstMember, difference);
 
-    answers.push(String(arithProgression[hiddenMemberIndex]));
+    const answer = String(arithProgression[hiddenMemberIndex]);
     arithProgression[hiddenMemberIndex] = '..';
-    questions.push(arithProgression.join(' '));
+    const question = arithProgression.join(' ');
+
+    answers.push(answer);
+    questions.push(question);
+
   }
   return [questions, answers];
 };

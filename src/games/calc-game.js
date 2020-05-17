@@ -1,5 +1,6 @@
 import { runBrainGame, numberRounds } from '../index';
 import getRandInt from '../utils';
+// import { question } from 'readline-sync';
 
 const operators = ['-', '+', '*'];
 let operator;
@@ -27,8 +28,11 @@ const getGameData = () => {
     const number1 = getRandInt(1, 100);
     const number2 = getRandInt(1, 100);
 
-    answers.push(String(getAnswer(number1, number2)));
-    questions.push(`${number1} ${operator} ${number2}`);
+    const answer = String(getAnswer(number1, number2));
+    const question = `${number1} ${operator} ${number2}`;
+
+    answers.push(answer);
+    questions.push(question);
   }
   return [questions, answers];
 };

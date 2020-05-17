@@ -21,8 +21,11 @@ const getGameData = () => {
 
   for (let i = 0; i < numberRounds; i += 1) {
     const question = getRandInt(0, 9);
+    const answer = isPrime(question) ? 'yes' : 'no';
+
     questions.push(String(question));
-    answers.push(isPrime(question) ? 'yes' : 'no');
+    answers.push(answer);
+
   }
   return [questions, answers];
 };

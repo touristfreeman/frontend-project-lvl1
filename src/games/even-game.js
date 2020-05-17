@@ -9,8 +9,10 @@ const getGameData = () => {
 
   for (let i = 0; i < numberRounds; i += 1) {
     const question = getRandInt(1, 100);
-    questions.push(String(question));
-    answers.push(isEven(question) ? 'yes' : 'no');
+    const answer = isEven(question) ? 'yes' : 'no';
+
+    answers.push(answer);
+    questions.push(question);
   }
   return [questions, answers];
 };

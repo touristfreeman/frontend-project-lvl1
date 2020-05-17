@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import ruGameParityCheck from '../games/even-game';
+import runGameParityCheck from '../games/even-game';
 
-ruGameParityCheck();
+runGameParityCheck();

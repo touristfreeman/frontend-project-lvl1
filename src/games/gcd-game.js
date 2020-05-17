@@ -9,8 +9,11 @@ const getGameData = () => {
   for (let i = 0; i < numberRounds; i += 1) {
     const number1 = getRandInt(1, 1000); // 680;
     const number2 = getRandInt(1, 1000); // 612;
-    questions.push(`${number1} ${number2}`);
-    answers.push(String(getGCD(number1, number2)));
+    const question = `${number1} ${number2}`;
+    const answer = String(getGCD(number1, number2));
+
+    answers.push(answer);
+    questions.push(question);
   }
   return [questions, answers];
 };
