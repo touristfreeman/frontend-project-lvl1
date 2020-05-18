@@ -1,12 +1,13 @@
 import {
   runBrainGame,
-  numberRounds
+  numberRounds,
 } from '../index';
 import getRandInt from '../utils';
 
-// const progressionLength = 9;
-
 /*
+const progressionLength = 9;
+
+
 const makeProgression = (firstMember, difference) => {
   const progression = [firstMember];
 
@@ -17,13 +18,11 @@ const makeProgression = (firstMember, difference) => {
 };
 */
 
-const makeProgression = (firstItem, difference) => {
+const makeProgression = (firstItem, step) => {
   const progression = [];
-  let step = 1;
 
   for (let i = 0; i <= 9; i += 1) {
-    progression.push((firstItem * i + step) + difference);
-    step += 1;
+    progression.push(firstItem * i + step);
   }
   return progression;
 };
