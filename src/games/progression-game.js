@@ -4,25 +4,14 @@ import {
 } from '../index';
 import getRandInt from '../utils';
 
-/*
-const progressionLength = 9;
 
-
-const makeProgression = (firstMember, difference) => {
-  const progression = [firstMember];
-
-  for (let i = 0; i <= progressionLength - 1; i += 1) {
-    progression.push(progression[i] + difference);
-  }
-  return progression;
-};
-*/
+const progressionLength = 10;
 
 const makeProgression = (firstItem, step) => {
   const progression = [];
 
-  for (let i = 0; i <= 9; i += 1) {
-    progression.push(firstItem * i + step);
+  for (let i = 0; i < progressionLength; i += 1) {
+    progression.push(firstItem + i * step);
   }
   return progression;
 };

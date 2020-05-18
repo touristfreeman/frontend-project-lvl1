@@ -19,7 +19,7 @@ const getAnswer = (num1, num2, operator) => {
       return num1 + num2;
 
     default:
-      console.log('Unknown state in calc-games.js!');
+      return console.log('Unknown state in calc-games.js!');
   }
 };
 
