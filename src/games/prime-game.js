@@ -25,7 +25,6 @@ const getGameData = () => {
 
     questions.push(String(question));
     answers.push(answer);
-
   }
   return [questions, answers];
 };
