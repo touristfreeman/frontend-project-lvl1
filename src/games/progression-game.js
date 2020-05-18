@@ -4,7 +4,6 @@ import {
 } from '../index';
 import getRandInt from '../utils';
 
-
 const progressionLength = 10;
 
 const makeProgression = (firstItem, step) => {
